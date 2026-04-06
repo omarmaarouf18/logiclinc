@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logic Link — Brand Kit Download</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0D2137;
+  --teal: #0A9396;
+  --bg: #0a0a0f;
+  --surface: #111118;
+  --border: #1e1e2e;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); font-family:'Outfit',sans-serif; color:#fff; padding:40px 20px; }
+
+h1 { text-align:center; font-family:'Syne',sans-serif; font-size:13px; letter-spacing:8px; text-transform:uppercase; color:var(--teal); margin-bottom:8px; }
+.sub { text-align:center; font-size:11px; color:#333; letter-spacing:3px; text-transform:uppercase; margin-bottom:48px; }
+
+.section-title { font-family:'Syne',sans-serif; font-size:11px; letter-spacing:5px; text-transform:uppercase; color:#333; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border); }
+.section-title span { color:var(--teal); }
+.section { margin-bottom:52px; }
+
+.grid { display:grid; gap:16px; }
+.grid-4 { grid-template-columns: repeat(4,1fr); }
+.grid-3 { grid-template-columns: repeat(3,1fr); }
+.grid-2 { grid-template-columns: repeat(2,1fr); }
+.grid-1 { grid-template-columns: 1fr; }
+
+.card { background:var(--surface); border:1px solid var(--border); border-radius:12px; overflow:hidden; }
+.preview { display:flex; align-items:center; justify-content:center; background:#fff; }
+.preview.dark { background:var(--navy); }
+.preview.grad { background:linear-gradient(135deg,#0D2137 0%,#071020 100%); }
+
+.info { padding:12px 14px; border-top:1px solid var(--border); }
+.info .name { font-family:'Syne',sans-serif; font-size:12px; font-weight:700; color:#fff; }
+.info .size { font-size:11px; color:var(--teal); font-family:monospace; margin:2px 0; }
+.info .plat { font-size:10px; color:#444; margin-bottom:10px; }
+
+.btn-dl {
+  width:100%;
+  padding:8px;
+  background:transparent;
+  border:1px solid var(--teal);
+  color:var(--teal);
+  border-radius:6px;
+  font-family:'Outfit',sans-serif;
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.btn-dl:hover { background:var(--teal); color:#fff; }
+.btn-dl:active { opacity:0.7; }
+
+canvas { display:none; }
+
+@media(max-width:768px) {
+  .grid-4,.grid-3 { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:480px) {
+  .grid-4,.grid-3,.grid-2 { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<h1>Logic Link</h1>
+<div class="sub">Brand Kit — Click to Download PNG</div>
+
+<!-- ===== APP ICONS ===== -->
+<div class="section">
+  <div class="section-title">App Icons <span>/ iOS · Android · Web</span></div>
+  <div class="grid grid-4">
+
+    <div class="card">
+      <div class="preview dark" style="height:140px;">
+        <div style="width:80px;height:80px;background:linear-gradient(135deg,#0D2137,#0a1828);border-radius:18px;display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">App Store Icon</div>
+        <div class="size">1024 × 1024</div>
+        <div class="plat">iOS App Store</div>
+        <button class="btn-dl" onclick="downloadIcon(1024,'icon-appstore.png','rounded-square')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview dark" style="height:140px;">
+        <div style="width:70px;height:70px;background:linear-gradient(135deg,#0D2137,#0a1828);border-radius:16px;display:flex;align-items:center;justify-content:center;">
+          <svg width="42" height="42" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Play Store Icon</div>
+        <div class="size">512 × 512</div>
+        <div class="plat">Google Play</div>
+        <button class="btn-dl" onclick="downloadIcon(512,'icon-playstore.png','rounded-square')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview dark" style="height:140px;">
+        <div style="width:60px;height:60px;background:linear-gradient(135deg,#0D2137,#0a1828);border-radius:14px;display:flex;align-items:center;justify-content:center;">
+          <svg width="36" height="36" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">PWA Icon</div>
+        <div class="size">192 × 192</div>
+        <div class="plat">Android / PWA</div>
+        <button class="btn-dl" onclick="downloadIcon(192,'icon-pwa.png','rounded-square')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview dark" style="height:140px;">
+        <div style="width:60px;height:60px;background:linear-gradient(135deg,#0D2137,#0a1828);border-radius:50%;display:flex;align-items:center;justify-content:center;">
+          <svg width="36" height="36" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Round Icon</div>
+        <div class="size">512 × 512</div>
+        <div class="plat">Android Adaptive</div>
+        <button class="btn-dl" onclick="downloadIcon(512,'icon-round.png','circle')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview dark" style="height:100px;">
+        <div style="width:45px;height:45px;background:linear-gradient(135deg,#0D2137,#0a1828);border-radius:10px;display:flex;align-items:center;justify-content:center;">
+          <svg width="28" height="28" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">iPhone Touch</div>
+        <div class="size">180 × 180</div>
+        <div class="plat">iPhone Home Screen</div>
+        <button class="btn-dl" onclick="downloadIcon(180,'icon-iphone.png','rounded-square')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview dark" style="height:100px;">
+        <div style="width:38px;height:38px;background:linear-gradient(135deg,#0D2137,#0a1828);border-radius:8px;display:flex;align-items:center;justify-content:center;">
+          <svg width="22" height="22" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">iPad Icon</div>
+        <div class="size">152 × 152</div>
+        <div class="plat">iPad Home Screen</div>
+        <button class="btn-dl" onclick="downloadIcon(152,'icon-ipad.png','rounded-square')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview" style="height:100px;background:#f5f5f5;">
+        <div style="display:flex;gap:12px;align-items:center;">
+          <div style="width:32px;height:32px;background:#0D2137;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+            <svg width="20" height="20" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/></svg>
+          </div>
+          <div style="width:16px;height:16px;background:#0D2137;border-radius:2px;display:flex;align-items:center;justify-content:center;">
+            <svg width="10" height="10" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/></svg>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Favicon 32px</div>
+        <div class="size">32 × 32</div>
+        <div class="plat">Browser Tab</div>
+        <button class="btn-dl" onclick="downloadIcon(32,'favicon-32.png','square')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview" style="height:100px;background:#f5f5f5;">
+        <div style="width:16px;height:16px;background:#0D2137;border-radius:2px;display:flex;align-items:center;justify-content:center;">
+          <svg width="10" height="10" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Favicon 16px</div>
+        <div class="size">16 × 16</div>
+        <div class="plat">Browser Tab Small</div>
+        <button class="btn-dl" onclick="downloadIcon(16,'favicon-16.png','square')">↓ Download PNG</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== SOCIAL COVERS ===== -->
+<div class="section">
+  <div class="section-title">Social Media Covers <span>/ LinkedIn · Facebook · Twitter · YouTube</span></div>
+  <div class="grid grid-1">
+
+    <div class="card">
+      <div class="preview grad" style="height:140px;">
+        <div style="display:flex;align-items:center;gap:20px;">
+          <svg width="52" height="52" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:28px;font-weight:800;color:#fff;">Logic Link</div>
+            <div style="font-size:11px;color:#0A9396;letter-spacing:4px;text-transform:uppercase;margin-top:4px;">Technology Services</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">LinkedIn Cover</div>
+        <div class="size">1584 × 396</div>
+        <div class="plat">LinkedIn Company / Personal</div>
+        <button class="btn-dl" onclick="downloadCover(1584,396,'linkedin-cover.png')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview grad" style="height:120px;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <svg width="44" height="44" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:24px;font-weight:800;color:#fff;">Logic Link</div>
+            <div style="font-size:10px;color:#0A9396;letter-spacing:3px;text-transform:uppercase;margin-top:3px;">Technology Services</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Facebook Cover</div>
+        <div class="size">820 × 312</div>
+        <div class="plat">Facebook Page</div>
+        <button class="btn-dl" onclick="downloadCover(820,312,'facebook-cover.png')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview grad" style="height:120px;">
+        <div style="display:flex;align-items:center;gap:16px;">
+          <svg width="40" height="40" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:#fff;">Logic Link</div>
+            <div style="font-size:9px;color:#0A9396;letter-spacing:3px;text-transform:uppercase;margin-top:3px;">Technology Services</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Twitter / X Header</div>
+        <div class="size">1500 × 500</div>
+        <div class="plat">Twitter / X Profile</div>
+        <button class="btn-dl" onclick="downloadCover(1500,500,'twitter-header.png')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview grad" style="height:160px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+          <svg width="52" height="52" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:#fff;">Logic Link</div>
+            <div style="font-size:10px;color:#0A9396;letter-spacing:4px;text-transform:uppercase;margin-top:4px;">Technology Services</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">YouTube Channel Art</div>
+        <div class="size">2560 × 1440</div>
+        <div class="plat">YouTube Channel</div>
+        <button class="btn-dl" onclick="downloadCover(2560,1440,'youtube-channelart.png')">↓ Download PNG</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== PROFILE PHOTOS ===== -->
+<div class="section">
+  <div class="section-title">Profile Photos <span>/ All Platforms</span></div>
+  <div class="grid grid-4">
+
+    <div class="card">
+      <div class="preview dark" style="height:120px;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#0D2137,#0a1828);display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Profile Photo</div>
+        <div class="size">400 × 400</div>
+        <div class="plat">LinkedIn / Twitter</div>
+        <button class="btn-dl" onclick="downloadIcon(400,'profile-400.png','circle')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview dark" style="height:120px;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#0D2137,#0a1828);display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">WhatsApp / Instagram</div>
+        <div class="size">640 × 640</div>
+        <div class="plat">WhatsApp Business</div>
+        <button class="btn-dl" onclick="downloadIcon(640,'profile-whatsapp.png','circle')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview dark" style="height:120px;">
+        <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#0D2137,#0a1828);display:flex;align-items:center;justify-content:center;">
+          <svg width="48" height="48" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">YouTube Avatar</div>
+        <div class="size">800 × 800</div>
+        <div class="plat">YouTube Channel</div>
+        <button class="btn-dl" onclick="downloadIcon(800,'profile-youtube.png','circle')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview" style="height:120px;background:#f5f5f5;">
+        <div style="width:70px;height:70px;border-radius:8px;background:#fff;border:1px solid #eee;display:flex;align-items:center;justify-content:center;">
+          <svg width="44" height="44" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="#0D2137"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="#0D2137" opacity="0.5"/></svg>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Email Signature</div>
+        <div class="size">200 × 200</div>
+        <div class="plat">Gmail / Outlook</div>
+        <button class="btn-dl" onclick="downloadIconWhite(200,'email-avatar.png')">↓ Download PNG</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== OG / WEBSITE ===== -->
+<div class="section">
+  <div class="section-title">Website & OG Images <span>/ SEO · Social Sharing</span></div>
+  <div class="grid grid-2">
+
+    <div class="card">
+      <div class="preview grad" style="height:140px;">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px;">
+          <svg width="40" height="40" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+          <div style="text-align:center;">
+            <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;">Logic Link</div>
+            <div style="font-size:9px;color:#0A9396;letter-spacing:3px;margin-top:3px;">TECHNOLOGY SERVICES</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">OG Image</div>
+        <div class="size">1200 × 630</div>
+        <div class="plat">Facebook / LinkedIn Share</div>
+        <button class="btn-dl" onclick="downloadCover(1200,630,'og-image.png')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="preview grad" style="height:140px;">
+        <div style="display:flex;align-items:center;gap:14px;">
+          <svg width="36" height="36" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+          <div>
+            <div style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;">Logic Link</div>
+            <div style="font-size:9px;color:#0A9396;letter-spacing:3px;margin-top:3px;">TECHNOLOGY SERVICES</div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Twitter Card</div>
+        <div class="size">1200 × 600</div>
+        <div class="plat">Twitter / X Link Preview</div>
+        <button class="btn-dl" onclick="downloadCover(1200,600,'twitter-card.png')">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card" style="grid-column:1/-1;">
+      <div class="preview" style="height:80px;background:#fff;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg width="36" height="36" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="#0D2137"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="#0D2137" opacity="0.5"/></svg>
+          <div>
+            <span style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#0D2137;">Logic Link</span>
+            <span style="font-size:10px;color:#6B7B8D;letter-spacing:2px;margin-left:8px;text-transform:uppercase;">Technology Services</span>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Navbar / Website Logo (Light BG)</div>
+        <div class="size">600 × 150</div>
+        <div class="plat">Website Navigation</div>
+        <button class="btn-dl" onclick="downloadNavbar('navbar-light.png', false)">↓ Download PNG</button>
+      </div>
+    </div>
+
+    <div class="card" style="grid-column:1/-1;">
+      <div class="preview grad" style="height:80px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <svg width="36" height="36" viewBox="0 0 60 60"><polygon points="8,52 8,18 20,18 20,42 32,42 32,52" fill="white"/><polygon points="28,8 52,8 52,20 38,20 38,32 28,32" fill="#0A9396"/><polygon points="28,32 38,32 38,42 28,42" fill="white" opacity="0.4"/></svg>
+          <div>
+            <span style="font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:#fff;">Logic Link</span>
+            <span style="font-size:10px;color:#0A9396;letter-spacing:2px;margin-left:8px;text-transform:uppercase;">Technology Services</span>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="name">Navbar / Website Logo (Dark BG)</div>
+        <div class="size">600 × 150</div>
+        <div class="plat">Dark Website Navigation</div>
+        <button class="btn-dl" onclick="downloadNavbar('navbar-dark.png', true)">↓ Download PNG</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== HIDDEN CANVAS ===== -->
+<canvas id="c"></canvas>
+
+<script>
+const NAVY = '#0D2137';
+const TEAL = '#0A9396';
+
+// Draw the LL mark on canvas
+function drawMark(ctx, x, y, size) {
+  const u = size / 60;
+  ctx.save();
+  ctx.translate(x, y);
+
+  // Navy L
+  ctx.fillStyle = NAVY;
+  ctx.beginPath();
+  ctx.moveTo(8*u, 52*u);
+  ctx.lineTo(8*u, 18*u);
+  ctx.lineTo(20*u, 18*u);
+  ctx.lineTo(20*u, 42*u);
+  ctx.lineTo(32*u, 42*u);
+  ctx.lineTo(32*u, 52*u);
+  ctx.closePath();
+  ctx.fill();
+
+  // Teal L
+  ctx.fillStyle = TEAL;
+  ctx.beginPath();
+  ctx.moveTo(28*u, 8*u);
+  ctx.lineTo(52*u, 8*u);
+  ctx.lineTo(52*u, 20*u);
+  ctx.lineTo(38*u, 20*u);
+  ctx.lineTo(38*u, 32*u);
+  ctx.lineTo(28*u, 32*u);
+  ctx.closePath();
+  ctx.fill();
+
+  // Overlap
+  ctx.fillStyle = NAVY;
+  ctx.globalAlpha = 0.4;
+  ctx.beginPath();
+  ctx.moveTo(28*u, 32*u);
+  ctx.lineTo(38*u, 32*u);
+  ctx.lineTo(38*u, 42*u);
+  ctx.lineTo(28*u, 42*u);
+  ctx.closePath();
+  ctx.fill();
+  ctx.globalAlpha = 1;
+
+  ctx.restore();
+}
+
+function drawText(ctx, w, h, fontSize, tagSize, light) {
+  const textColor = light ? '#fff' : NAVY;
+  const tagColor  = light ? TEAL   : '#6B7B8D';
+
+  ctx.fillStyle = textColor;
+  ctx.font = `800 ${fontSize}px Syne, sans-serif`;
+  ctx.textBaseline = 'middle';
+  return { textColor, tagColor };
+}
+
+// ---- ICON (square / rounded-square / circle) ----
+function downloadIcon(size, filename, shape) {
+  const c = document.getElementById('c');
+  c.width = size; c.height = size;
+  const ctx = c.getContext('2d');
+
+  // Background gradient
+  const grad = ctx.createLinearGradient(0,0,size,size);
+  grad.addColorStop(0, '#0D2137');
+  grad.addColorStop(1, '#071020');
+
+  ctx.clearRect(0,0,size,size);
+
+  if (shape === 'circle') {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(size/2,size/2,size/2,0,Math.PI*2);
+    ctx.clip();
+  } else if (shape === 'rounded-square') {
+    const r = size * 0.22;
+    ctx.save();
+    ctx.beginPath();
+    ctx.moveTo(r,0); ctx.lineTo(size-r,0);
+    ctx.quadraticCurveTo(size,0,size,r);
+    ctx.lineTo(size,size-r);
+    ctx.quadraticCurveTo(size,size,size-r,size);
+    ctx.lineTo(r,size);
+    ctx.quadraticCurveTo(0,size,0,size-r);
+    ctx.lineTo(0,r);
+    ctx.quadraticCurveTo(0,0,r,0);
+    ctx.closePath();
+    ctx.clip();
+  }
+
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,size,size);
+
+  const markSize = size * 0.65;
+  const mx = (size - markSize) / 2;
+  const my = (size - markSize) / 2;
+  // White mark for dark bg
+  drawMarkWhite(ctx, mx, my, markSize);
+
+  if (shape !== 'square') ctx.restore();
+  triggerDownload(c, filename);
+}
+
+function downloadIconWhite(size, filename) {
+  const c = document.getElementById('c');
+  c.width = size; c.height = size;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#ffffff';
+  ctx.fillRect(0,0,size,size);
+  const markSize = size * 0.75;
+  const mx = (size - markSize) / 2;
+  const my = (size - markSize) / 2;
+  drawMark(ctx, mx, my, markSize);
+  triggerDownload(c, filename);
+}
+
+function drawMarkWhite(ctx, x, y, size) {
+  const u = size / 60;
+  ctx.save();
+  ctx.translate(x, y);
+
+  ctx.fillStyle = '#ffffff';
+  ctx.beginPath();
+  ctx.moveTo(8*u, 52*u); ctx.lineTo(8*u, 18*u);
+  ctx.lineTo(20*u, 18*u); ctx.lineTo(20*u, 42*u);
+  ctx.lineTo(32*u, 42*u); ctx.lineTo(32*u, 52*u);
+  ctx.closePath(); ctx.fill();
+
+  ctx.fillStyle = TEAL;
+  ctx.beginPath();
+  ctx.moveTo(28*u, 8*u); ctx.lineTo(52*u, 8*u);
+  ctx.lineTo(52*u, 20*u); ctx.lineTo(38*u, 20*u);
+  ctx.lineTo(38*u, 32*u); ctx.lineTo(28*u, 32*u);
+  ctx.closePath(); ctx.fill();
+
+  ctx.fillStyle = '#ffffff';
+  ctx.globalAlpha = 0.35;
+  ctx.beginPath();
+  ctx.moveTo(28*u,32*u); ctx.lineTo(38*u,32*u);
+  ctx.lineTo(38*u,42*u); ctx.lineTo(28*u,42*u);
+  ctx.closePath(); ctx.fill();
+  ctx.globalAlpha = 1;
+
+  ctx.restore();
+}
+
+// ---- COVER (banner) ----
+function downloadCover(w, h, filename) {
+  const c = document.getElementById('c');
+  c.width = w; c.height = h;
+  const ctx = c.getContext('2d');
+
+  // Background
+  const grad = ctx.createLinearGradient(0,0,w,h);
+  grad.addColorStop(0, '#0D2137');
+  grad.addColorStop(0.6, '#0a1828');
+  grad.addColorStop(1, '#071020');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0,0,w,h);
+
+  // Subtle teal glow
+  const glow = ctx.createRadialGradient(w*0.75, h*0.5, 0, w*0.75, h*0.5, w*0.4);
+  glow.addColorStop(0, 'rgba(10,147,150,0.12)');
+  glow.addColorStop(1, 'rgba(10,147,150,0)');
+  ctx.fillStyle = glow;
+  ctx.fillRect(0,0,w,h);
+
+  // Layout: icon + text centered and scaled to fit width
+  const contentMaxW = w * 0.9;
+  const markBase = h * 0.55;
+  const gapBase = h * 0.12;
+  const brandBase = Math.round(h * 0.32);
+  const tagBase = Math.round(h * 0.09);
+
+  ctx.font = `800 ${brandBase}px Syne, sans-serif`;
+  const textBaseW = ctx.measureText('Logic Link').width;
+  const totalBaseW = markBase + gapBase + textBaseW;
+  const scale = Math.min(1, contentMaxW / totalBaseW);
+
+  const markSize = markBase * scale;
+  const gap = gapBase * scale;
+  const brandSize = Math.max(12, Math.round(brandBase * scale));
+  const tagSize = Math.max(8, Math.round(tagBase * scale));
+
+  ctx.font = `800 ${brandSize}px Syne, sans-serif`;
+  const textW = ctx.measureText('Logic Link').width;
+  const totalW = markSize + gap + textW;
+  const startX = (w - totalW) / 2;
+  const startY = (h - markSize) / 2;
+
+  drawMarkWhite(ctx, startX, startY, markSize);
+
+  const textX = startX + markSize + gap;
+
+  ctx.fillStyle = '#ffffff';
+  ctx.font = `800 ${brandSize}px Syne, sans-serif`;
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Logic Link', textX, h * 0.44);
+
+  ctx.fillStyle = TEAL;
+  ctx.font = `400 ${tagSize}px Outfit, sans-serif`;
+  ctx.letterSpacing = '4px';
+  ctx.fillText('TECHNOLOGY SERVICES', textX, h * 0.65);
+
+  triggerDownload(c, filename);
+}
+
+function estimateTextWidth(ctx, h) {
+  ctx.font = `800 ${Math.round(h*0.32)}px Syne, sans-serif`;
+  return ctx.measureText('Logic Link').width;
+}
+
+// ---- NAVBAR ----
+function downloadNavbar(filename, dark) {
+  const w = 600, h = 150;
+  const c = document.getElementById('c');
+  c.width = w; c.height = h;
+  const ctx = c.getContext('2d');
+
+  if (dark) {
+    const grad = ctx.createLinearGradient(0,0,w,h);
+    grad.addColorStop(0,'#0D2137'); grad.addColorStop(1,'#071020');
+    ctx.fillStyle = grad;
+  } else {
+    ctx.fillStyle = '#ffffff';
+  }
+  ctx.fillRect(0,0,w,h);
+
+  const markSize = 80;
+  const my = (h - markSize) / 2;
+  const mx = 20;
+
+  if (dark) drawMarkWhite(ctx, mx, my, markSize);
+  else drawMark(ctx, mx, my, markSize);
+
+  const tx = mx + markSize + 16;
+
+  ctx.fillStyle = dark ? '#ffffff' : NAVY;
+  ctx.font = '800 40px Syne, sans-serif';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('Logic Link', tx, h * 0.42);
+
+  ctx.fillStyle = dark ? TEAL : '#6B7B8D';
+  ctx.font = '400 14px Outfit, sans-serif';
+  ctx.fillText('TECHNOLOGY SERVICES', tx + 2, h * 0.68);
+
+  triggerDownload(c, filename);
+}
+
+function triggerDownload(canvas, filename) {
+  const link = document.createElement('a');
+  link.download = filename;
+  link.href = canvas.toDataURL('image/png');
+  link.click();
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "services": [
+    {
+      "title": "تطوير الويب",
+      "description": "مواقع ويب عالية الأداء وأنظمة أعمال آمنة.",
+      "icon": "fa-code",
+      "link": "web-dev-ar.html"
+    },
+    {
+      "title": "تطبيقات الهاتف",
+      "description": "تجارب هاتفية آمنة وموثوقة عبر المنصات المختلفة.",
+      "icon": "fa-mobile-screen-button",
+      "link": "mobile-apps-ar.html"
+    },
+    {
+      "title": "تطبيقات سطح المكتب",
+      "description": "تطبيقات أصلية مع أداء عالي وأمان شامل للعمليات الحرجة.",
+      "icon": "fa-desktop",
+      "link": "desktop-apps-ar.html"
+    },
+    {
+      "title": "تدقيق الأمان",
+      "description": "تقييمات موجهة للتهديدات لتعزيز الثقة الرقمية.",
+      "icon": "fa-shield-halved",
+      "link": "security-audits-ar.html"
+    },
+    {
+      "title": "دمج واجهات برمجية",
+      "description": "تكاملات موثوقة لتحسين استمرارية الأعمال.",
+      "icon": "fa-network-wired",
+      "link": "api-integration-ar.html"
+    }
+  ]
+}

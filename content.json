@@ -1,0 +1,35 @@
+﻿{
+  "services": [
+    {
+      "title": "Web Dev",
+      "description": "High-performance websites and secure business platforms.",
+      "icon": "fa-code",
+      "link": "web-dev.html"
+    },
+    {
+      "title": "Mobile Apps",
+      "description": "Secure cross-platform mobile experiences for your teams.",
+      "icon": "fa-mobile-screen-button",
+      "link": "mobile-apps.html"
+    },
+    {
+      "title": "Desktop Apps",
+      "description": "Native C++/Qt 6 applications with high performance and security.",
+      "icon": "fa-desktop",
+      "link": "desktop-apps.html"
+    },
+    {
+      "title": "Security Audits",
+      "description": "Threat-focused assessments to strengthen digital trust.",
+      "icon": "fa-shield-halved",
+      "link": "security-audits.html"
+    },
+    {
+      "title": "API Integration",
+      "description": "Reliable integrations to improve workflow continuity.",
+      "icon": "fa-network-wired",
+      "link": "api-integration.html"
+    }
+  ]
+}
+

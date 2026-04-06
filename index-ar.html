@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Logic Link EG | تكامل الأنظمة الآمنة</title>
+  <meta name="description" content="Logic Link EG تمكن المؤسسات من خلال البرامج الآمنة والتكامل السلس للأنظمة." />
+
+  <!-- Google Fonts - Cairo for Arabic -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brandCyan: "#00a3ad"
+          },
+          fontFamily: {
+            sans: ["Cairo", "Segoe UI", "Frutiger", "Arial", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 8px 28px rgba(2, 6, 23, 0.08)"
+          }
+        }
+      }
+    };
+  </script>
+  <script>
+    const savedTheme = localStorage.getItem("logiclink-theme");
+    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+      document.documentElement.classList.add("dark");
+    }
+  </script>
+  <!-- Vercel Analytics placeholder -->
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8tU94W+qY2m2I1NfQf8YB9S3g6Q4R0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
+  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/90">
+    <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+      <a href="#" class="flex items-center gap-3">
+        <img src="assets/icon-round.png" alt="Logic Link EG logo" class="h-9 w-9 rounded-md border border-slate-200 object-contain" />
+        <span class="text-base font-semibold tracking-tight text-slate-900 dark:text-white">Logic Link EG</span>
+      </a>
+
+      <div class="hidden items-center gap-8 md:flex">
+        <div class="group relative">
+          <button class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
+            المنتجات
+          </button>
+          <div class="absolute left-0 top-full hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-800 dark:bg-slate-900 group-hover:block">
+            <a href="web-dev-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تطوير الويب</a>
+            <a href="mobile-apps-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تطبيقات الهاتف</a>
+            <a href="desktop-apps-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تطبيقات سطح المكتب</a>
+            <a href="security-audits-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تدقيق الأمان</a>
+            <a href="api-integration-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">دمج واجهات برمجية</a>
+          </div>
+        </div>
+        <a href="#solutions" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">الحلول</a>
+        <a href="#security" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">الأمان</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="themeToggle" type="button" aria-label="تبديل الوضع المظلم" class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
+          <i class="fa-solid fa-moon text-sm dark:hidden"></i>
+          <i class="fa-solid fa-sun hidden text-sm dark:inline-block"></i>
+        </button>
+        <button id="languageToggle" type="button" aria-label="Switch to English" class="inline-flex items-center gap-2 rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">
+          <i class="fa-solid fa-globe text-sm"></i>
+          EN
+        </button>
+        <button id="mobileMenuToggle" type="button" aria-label="تبديل القائمة المحمولة" class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 md:hidden">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+        <a href="#contact" class="hidden rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-700 sm:inline-block">اتصل بنا</a>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 md:hidden">
+      <div class="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6">
+        <div class="space-y-3">
+          <a href="#" class="block rounded-md px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">المنتجات</a>
+          <div class="pl-4 space-y-2">
+            <a href="web-dev-ar.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">تطوير الويب</a>
+            <a href="mobile-apps-ar.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">تطبيقات الهاتف</a>
+            <a href="desktop-apps-ar.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">تطبيقات سطح المكتب</a>
+            <a href="security-audits-ar.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">تدقيق الأمان</a>
+            <a href="api-integration-ar.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">دمج واجهات برمجية</a>
+          </div>
+          <a href="#solutions" class="block rounded-md px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">الحلول</a>
+          <a href="#security" class="block rounded-md px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">الأمان</a>
+          <a href="#contact" class="block rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-700">اتصل بنا</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100/60 dark:border-slate-800 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900/60 animate__animated animate__fadeInUp">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-6 lg:px-8 lg:py-24">
+        <div class="lg:col-span-7 animate__animated animate__fadeInUp">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brandCyan">Logic Link EG</p>
+          <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl dark:text-white">آمن. متكامل. قابل للتوسع.</h1>
+          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
+            تمكين أعمالك من خلال برامج عالية الأمان وتكامل سلس للأنظمة.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900/80">
+            <div class="relative h-[300px] bg-slate-50 p-4 dark:bg-slate-800">
+              <picture>
+                <source srcset="assets/navbar-dark.png" media="(prefers-color-scheme: dark)" />
+                <img src="assets/navbar-light.png" alt="Logic Link EG visual" class="h-full w-full object-contain" />
+              </picture>
+            </div>
+            <div class="absolute left-8 top-8 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-white/95 px-3 py-1.5 text-xs font-semibold text-cyan-800 shadow-sm backdrop-blur dark:border-cyan-400/30 dark:bg-slate-950/90 dark:text-cyan-300">
+              <i class="fa-solid fa-shield-halved"></i>
+              معتمد آمن
+            </div>
+            <div class="grid grid-cols-2 gap-3 px-5 py-4 text-sm sm:px-6 sm:py-5">
+              <div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80">
+                <p class="font-semibold text-slate-900 dark:text-white">جاهز للمؤسسات</p>
+                <p class="mt-1 text-slate-600 dark:text-slate-300">مصمم للتوسع</p>
+              </div>
+              <div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80">
+                <p class="font-semibold text-slate-900 dark:text-white">الأمان أولاً</p>
+                <p class="mt-1 text-slate-600 dark:text-slate-300">مدمج في كل طبقة</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="mx-auto w-full max-w-7xl animate__animated animate__fadeInUp animate__delay-1s px-4 py-16 sm:px-6 lg:px-8">
+      <div class="mb-8">
+        <h2 class="text-3xl font-bold leading-tight tracking-tight text-slate-950 dark:text-white">المقدرات الأساسية</h2>
+        <p class="mt-2 text-slate-600 dark:text-slate-300">الخدمات المهنية المصممة للعمليات الرقمية الحديثة.</p>
+      </div>
+
+      <!-- Loading spinner container -->
+      <div id="servicesLoader" class="flex items-center justify-center py-12">
+        <div class="inline-flex items-center gap-3">
+          <div class="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-brandCyan dark:border-slate-700 dark:border-t-cyan-500"></div>
+          <span class="text-sm font-medium text-slate-600 dark:text-slate-400">جاري التحميل...</span>
+        </div>
+      </div>
+
+      <!-- Services grid (populated by JavaScript) -->
+      <div id="servicesGrid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"></div>
+    </section>
+
+    <section id="solutions" class="border-y border-slate-200 bg-slate-50/70 dark:border-slate-800 dark:bg-slate-900/40">
+      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 items-stretch gap-0 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8">
+        <div class="order-2 h-[280px] overflow-hidden rounded-b-xl border border-t-0 border-slate-200 bg-white sm:h-[340px] lg:order-1 lg:h-auto lg:rounded-l-xl lg:rounded-r-none lg:border-r-0 lg:border-t dark:border-slate-800 dark:bg-slate-900">
+          <img src="assets/og-image.png" alt="Security and compliance feature visual" class="h-full w-full object-contain" loading="lazy" />
+        </div>
+
+        <div id="security" class="order-1 rounded-t-xl border border-slate-200 bg-white p-8 shadow-soft lg:order-2 lg:rounded-l-none lg:rounded-r-xl lg:p-12 dark:border-slate-800 dark:bg-slate-900/80">
+          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brandCyan">ميزة مميزة</p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">نهج ركز على الأمان</h2>
+          <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
+            نبدأ كل تفاعل مع مراجعة البنية الأساسية وتصميم النماذج التهديدية وتخطيط التطبيق الآمن.
+            الأمان ليس قائمة اختيار نهائية، بل هو الأساس.
+          </p>
+
+          <h3 class="mt-8 text-2xl font-semibold tracking-tight text-slate-900 dark:text-white">الامتثال القانوني التكنولوجي</h3>
+          <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">
+            يدعم نموذج التسليم الخاص بنا القطاعات القانونية والمنظمة من خلال الضوابط الخاصة بالسرية والتتبع والجاهزية للامتثال.
+          </p>
+
+          <ul class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200">
+            <li class="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
+              <i class="fa-solid fa-circle-check text-brandCyan"></i>
+              سرية البيانات
+            </li>
+            <li class="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
+              <i class="fa-solid fa-circle-check text-brandCyan"></i>
+              المواءمة التنظيمية
+            </li>
+            <li class="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
+              <i class="fa-solid fa-circle-check text-brandCyan"></i>
+              القابلية للتتبع
+            </li>
+          </ul>
+
+          <a href="#contact" class="mt-8 inline-flex items-center rounded-md bg-brandCyan px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-700">
+            تحدث مع فريقنا
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="bg-white py-16 dark:bg-slate-950">
+      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+          <div class="lg:col-span-4">
+            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brandCyan">اتصل</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">ابدأ محادثة آمنة.</h2>
+            <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
+              شارك أهدافك وسنقدم لك خطة موجزة وآمنة مصممة خصيصاً لفريقك.
+            </p>
+            <div class="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900/80">
+              <p class="text-sm font-semibold text-slate-900 dark:text-white">لماذا يتواصل العملاء معنا</p>
+              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
+                تسليم البرامج الآمنة وتخطيط التكامل والامتثال القانوني التكنولوجي والتحديث الموجه للخصوصية.
+              </p>
+            </div>
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80 sm:p-8">
+              <form action="https://formspree.io/f/mlgwvgzy" method="POST" class="grid grid-cols-1 gap-5">
+                <div>
+                  <label for="name" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">الاسم</label>
+                  <input id="name" name="name" type="text" placeholder="اسمك الكامل" class="block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-brandCyan focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500" />
+                </div>
+                <div>
+                  <label for="email" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">البريد الإلكتروني</label>
+                  <input id="email" name="email" type="email" placeholder="you@company.com" class="block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-brandCyan focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500" />
+                </div>
+                <div>
+                  <label for="message" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">الرسالة</label>
+                  <textarea id="message" name="message" rows="5" placeholder="أخبرنا عن مشروعك والجدول الزمني أو متطلبات الامتثال." class="block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-brandCyan focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"></textarea>
+                </div>
+                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                  <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">نرد برتقييم مركز وليس برسالة مبيعات عامة.</p>
+                  <button type="submit" class="inline-flex items-center justify-center rounded-md bg-brandCyan px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-700">
+                    إرسال الرسالة
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200 bg-slate-900 text-slate-300 dark:border-slate-800">
+    <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <div>
+        <h4 class="text-base font-semibold text-white">Logic Link EG</h4>
+        <p class="mt-3 text-sm leading-relaxed text-slate-400">
+          برامج آمنة وأنظمة متكاملة للشركات الحديثة والعمليات التكنولوجية القانونية.
+        </p>
+      </div>
+
+      <div>
+        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">المنتجات</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="web-dev-ar.html" class="transition hover:text-brandCyan">تطوير الويب</a></li>
+          <li><a href="mobile-apps-ar.html" class="transition hover:text-brandCyan">تطبيقات الهاتف</a></li>
+          <li><a href="desktop-apps-ar.html" class="transition hover:text-brandCyan">تطبيقات سطح المكتب</a></li>
+          <li><a href="security-audits-ar.html" class="transition hover:text-brandCyan">تدقيق الأمان</a></li>
+          <li><a href="api-integration-ar.html" class="transition hover:text-brandCyan">دمج واجهات برمجية</a></li>
+        </ul>
+      </div>
+
+      <div id="support">
+        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">اتصل</h5>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>
+            <a href="mailto:info@logiclinkeg.tech" class="transition hover:text-brandCyan">info@logiclinkeg.tech</a>
+          </li>
+          <li>القاهرة، مصر</li>
+          <li>من الاثنين إلى الجمعة، 9:00 - 18:00</li>
+        </ul>
+      </div>
+
+      <div>
+        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">وسائل التواصل</h5>
+        <div class="mt-4 flex items-center gap-3 text-xl">
+          <a
+            href="https://www.facebook.com/logiclinkeg/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-800 text-slate-200 transition hover:border-brandCyan hover:bg-slate-700 hover:text-brandCyan"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <a
+            href="https://x.com/Logic__Link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X"
+            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-800 text-slate-200 transition hover:border-brandCyan hover:bg-slate-700 hover:text-brandCyan"
+          >
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-slate-800 py-4">
+      <p class="mx-auto w-full max-w-7xl px-4 text-xs text-slate-500 sm:px-6 lg:px-8">
+        © 2026 Logic Link EG. جميع الحقوق محفوظة.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Fallback service data with Arabic translations
+    const fallbackServices = {
+      services: [
+        {
+          title: "تطوير الويب",
+          description: "مواقع ويب عالية الأداء وأنظمة أعمال آمنة.",
+          icon: "fa-code",
+          link: "web-dev-ar.html"
+        },
+        {
+          title: "تطبيقات الهاتف",
+          description: "تجارب هاتفية آمنة وموثوقة عبر المنصات المختلفة.",
+          icon: "fa-mobile-screen-button",
+          link: "mobile-apps-ar.html"
+        },
+        {
+          title: "تطبيقات سطح المكتب",
+          description: "تطبيقات أصلية مع أداء عالي وأمان شامل للعمليات الحرجة.",
+          icon: "fa-desktop",
+          link: "desktop-apps-ar.html"
+        },
+        {
+          title: "تدقيق الأمان",
+          description: "تقييمات موجهة للتهديدات لتعزيز الثقة الرقمية.",
+          icon: "fa-shield-halved",
+          link: "security-audits-ar.html"
+        },
+        {
+          title: "دمج واجهات برمجية",
+          description: "تكاملات موثوقة لتحسين استمرارية الأعمال.",
+          icon: "fa-network-wired",
+          link: "api-integration-ar.html"
+        }
+      ]
+    };
+
+    // Render service cards with Icon/Image Fit-or-Fallback logic
+    function renderServices(services) {
+      const servicesGrid = document.getElementById("servicesGrid");
+      const servicesLoader = document.getElementById("servicesLoader");
+      
+      if (!servicesGrid) {
+        console.warn("servicesGrid element not found in DOM");
+        return;
+      }
+
+      // Hide the loading spinner
+      if (servicesLoader) {
+        servicesLoader.style.display = "none";
+      }
+
+      // Generate HTML for all service cards with improved icon/image handling
+      servicesGrid.innerHTML = services.map((service) => {
+        // Icon/Image Container: Fixed-size (w-16 h-16), flexbox centered, light bg in light mode / dark in dark mode
+        let iconImageHTML = '';
+        
+        if (service.image) {
+          // If image exists in JSON: render with object-contain to fit without stretching/cutting
+          iconImageHTML = `
+            <img 
+              src="${service.image}" 
+              alt="${service.title} icon" 
+              class="w-full h-full object-contain" 
+              loading="lazy"
+            />
+          `;
+        } else if (service.icon) {
+          // If no image, render FontAwesome icon with fa-solid prefix (CRITICAL)
+          iconImageHTML = `<i class="fa-solid ${service.icon} text-2xl transition-transform duration-300 group-hover:animate-bounce"></i>`;
+        }
+        
+        return `
+          <article class="group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-brandCyan/50 hover:shadow-lg hover:shadow-cyan-500/10 dark:border-slate-800 dark:bg-slate-900/80">
+            <!-- Fixed-size icon/image container with proper centering and Fit-or-Fallback logic -->
+            <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-50 p-4 text-brandCyan dark:bg-slate-800 dark:text-cyan-400">
+              ${iconImageHTML}
+            </div>
+            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${service.title}</h3>
+            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${service.description}</p>
+            <a href="${service.link}" class="mt-auto inline-flex w-full items-center justify-center rounded-md bg-brandCyan py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">اقرأ المزيد</a>
+          </article>
+        `;
+      }).join("");
+    }
+
+    // Fetch and load service content from JSON with fallback
+    async function loadHomeContent() {
+      try {
+        // Fetch from root for consistent Vercel static routing.
+        const response = await fetch("/content-ar.json", { cache: "no-store" });
+        if (!response.ok) {
+          throw new Error(`Failed to load content-ar.json (status: ${response.status})`);
+        }
+
+        const data = await response.json();
+        const normalizedServices = (data.services || []).map((service) => ({
+          ...service,
+          image: typeof service.image === "string" ? service.image.replace(/^Logic link\//, "assets/") : service.image,
+          icon: typeof service.icon === "string" ? service.icon.replace(/^Logic link\//, "assets/") : service.icon
+        }));
+        
+        // Validate services array exists and is an array
+        if (Array.isArray(normalizedServices) && normalizedServices.length > 0) {
+          renderServices(normalizedServices);
+        } else {
+          throw new Error("Invalid services data in content-ar.json");
+        }
+      } catch (error) {
+        console.warn("loadHomeContent failed, using fallback data:", error);
+        renderServices(fallbackServices.services);
+      }
+    }
+
+    // CRITICAL: Wait for DOM to be fully ready before accessing elements
+    document.addEventListener("DOMContentLoaded", function() {
+      // Initialize theme toggle with proper event binding
+      const themeToggle = document.getElementById("themeToggle");
+      if (themeToggle) {
+        themeToggle.addEventListener("click", function() {
+          const isDark = document.documentElement.classList.toggle("dark");
+          localStorage.setItem("logiclink-theme", isDark ? "dark" : "light");
+        });
+      }
+
+      // Initialize mobile menu toggle
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (mobileMenuToggle && mobileMenu) {
+        mobileMenuToggle.addEventListener("click", function() {
+          mobileMenu.classList.toggle("hidden");
+        });
+
+        // Close menu when a link is clicked
+        const mobileLinks = mobileMenu.querySelectorAll("a");
+        mobileLinks.forEach(link => {
+          link.addEventListener("click", function() {
+            mobileMenu.classList.add("hidden");
+          });
+        });
+      }
+
+      // Initialize language toggle with proper event binding
+      const languageToggle = document.getElementById("languageToggle");
+      if (languageToggle) {
+        languageToggle.addEventListener("click", function() {
+          window.location.href = "index.html";
+        });
+      }
+
+      // Load services from JSON or use fallback
+      loadHomeContent();
+    });
+
+    // Fallback: Also call loadHomeContent on window load for browsers with delayed DOMContentLoaded
+    window.addEventListener("load", function() {
+      // Check if services grid is still empty
+      const servicesGrid = document.getElementById("servicesGrid");
+      if (servicesGrid && servicesGrid.innerHTML.trim() === "") {
+        loadHomeContent();
+      }
+    });
+  </script>
+</body>
+</html>
