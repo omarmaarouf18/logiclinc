@@ -1,51 +1,121 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Logic Link EG | Security Audits</title>
-  <meta name="description" content="Security audits and threat-focused assessments by Logic Link EG for modern digital platforms." />
-
+  <meta name="description" content="Logic Link EG - Security reviews, hardening plans, and compliance-oriented controls for critical systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       darkMode: "class",
       theme: {
         extend: {
-          colors: { brandCyan: "#00a3ad" },
-          fontFamily: { sans: ["Segoe UI", "Frutiger", "Arial", "sans-serif"] },
-          boxShadow: { soft: "0 8px 28px rgba(2, 6, 23, 0.08)" }
+          colors: { navy: "#0D2137", teal: "#0A9396", brandCyan: "#00a3ad" },
+          boxShadow: { glow: "0 0 0 1px rgba(0,163,173,.25), 0 14px 40px rgba(10,147,150,.2)", glass: "0 10px 35px rgba(2,8,23,.25)" }
         }
       }
     };
   </script>
-  <script>
-    const savedTheme = localStorage.getItem("logiclink-theme");
-    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      document.documentElement.classList.add("dark");
-    }
-  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body{font-family:"Outfit",sans-serif;background:radial-gradient(circle at 15% 18%, rgba(0,163,173,.18), transparent 36%), radial-gradient(circle at 85% 12%, rgba(10,147,150,.14), transparent 40%), linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%)}
+    html.dark body{background:radial-gradient(circle at 15% 18%, rgba(0,163,173,.20), transparent 38%), radial-gradient(circle at 85% 12%, rgba(10,147,150,.16), transparent 42%), linear-gradient(180deg,#0a0a0f 0%, #111118 100%)}
+    .glass{background:rgba(255,255,255,.66);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.45)}
+    html.dark .glass{background:rgba(17,17,24,.55);border-color:rgba(148,163,184,.24)}
+    .btn-press{transition:transform .18s ease}.btn-press:active{transform:scale(.97)}
+  </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
-  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/90">
-    <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-      <a href="index.html" class="flex items-center gap-3"><img src="assets/icon-round.png" alt="Logic Link EG logo" class="h-9 w-9 rounded-md border border-slate-200 object-contain" /><span class="text-base font-semibold tracking-tight text-slate-900 dark:text-white">Logic Link EG</span></a>
-      <div class="hidden items-center gap-8 md:flex"><div class="group relative"><button class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Products</button><div class="absolute left-0 top-full hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-800 dark:bg-slate-900 group-hover:block"><a href="web-dev.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Web Dev</a><a href="mobile-apps.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Mobile Apps</a><a href="desktop-apps.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Desktop Apps</a><a href="security-audits.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Security Audits</a><a href="api-integration.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">API Integration</a></div></div><a href="index.html#solutions" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Solutions</a><a href="index.html#security" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Security</a></div>
-      <div class="flex items-center gap-3"><button id="themeToggle" type="button" aria-label="Toggle dark mode" class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"><i class="fa-solid fa-moon text-sm dark:hidden"></i><i class="fa-solid fa-sun hidden text-sm dark:inline-block"></i></button><button id="languageToggle" type="button" aria-label="Switch to Arabic" class="inline-flex items-center gap-2 rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700"><i class="fa-solid fa-globe text-sm"></i>AR</button><a href="index.html#contact" class="rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">Contact Us</a></div>
+<body class="text-slate-800 dark:text-slate-100">
+  <header class="sticky top-0 z-50 mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+    <nav class="glass rounded-2xl shadow-glass" aria-label="Primary">
+      <div class="flex items-center justify-between px-4 py-3 sm:px-5">
+        <a href="index.html" class="flex items-center gap-3">
+          <img src="assets/icon-round.png" alt="Logic Link EG logo" class="h-10 w-10 rounded-lg border border-slate-200/70 object-contain dark:border-slate-700" />
+          <p class="text-base font-bold text-navy dark:text-white">Logic Link EG</p>
+        </a>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button id="themeToggle" type="button" class="btn-press inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white/85 text-slate-700 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200"><i class="fa-solid fa-moon text-sm dark:hidden"></i><i class="fa-solid fa-sun hidden text-sm dark:inline-block"></i></button>
+          <button id="langToggle" type="button" class="btn-press inline-flex items-center rounded-xl bg-navy px-3 py-2 text-sm font-semibold text-white"><i class="fa-solid fa-globe me-2"></i>AR</button>
+          <a href="index.html#contact" class="btn-press inline-flex items-center rounded-xl bg-brandCyan px-4 py-2 text-sm font-semibold text-slate-900">Contact</a>
+        </div>
+      </div>
     </nav>
   </header>
-  <main>
-    <section class="border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100/60 dark:border-slate-800 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900/60">
-      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-24">
-        <div class="lg:col-span-7"><a href="index.html" class="inline-flex items-center gap-2 rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700"><i class="fa-solid fa-arrow-left"></i>Back to Home</a><p class="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-brandCyan">Security Audits</p><h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">Security Audit and Risk Assessment Services</h1><p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">We review applications, systems, and workflows to uncover risk, strengthen controls, and improve resilience.</p><div class="mt-9 flex flex-col gap-3 sm:flex-row"><a href="index.html#contact" class="inline-flex items-center justify-center rounded-md bg-brandCyan px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">Request a Consultation</a><a href="#delivery" class="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50 hover:text-slate-900 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:hover:text-white">View Assessment Flow</a></div></div>
-        <div class="lg:col-span-5"><div class="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6 dark:border-slate-800 dark:bg-slate-900/80"><div class="relative flex h-[300px] items-center justify-center overflow-hidden rounded-lg bg-slate-100 p-4 dark:bg-slate-800"><picture><source srcset="assets/navbar-dark.png" media="(prefers-color-scheme: dark)" /><img src="assets/navbar-light.png" alt="Security audit visual" class="h-full w-full object-contain" /></picture></div><div class="mt-4 grid grid-cols-2 gap-3 text-sm"><div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80"><p class="font-semibold text-slate-900 dark:text-white">Threat Review</p><p class="mt-1 text-slate-600 dark:text-slate-300">Risk-focused</p></div><div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80"><p class="font-semibold text-slate-900 dark:text-white">Evidence Based</p><p class="mt-1 text-slate-600 dark:text-slate-300">Clear findings</p></div></div></div></div>
+
+  <main class="mx-auto w-full max-w-7xl px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pt-20">
+    <a href="index.html" class="btn-press inline-flex items-center rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100"><i class="fa-solid fa-arrow-left me-2"></i>Back to Home</a>
+
+    <section class="mt-8 grid items-center gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal dark:text-cyan-300">Security Audits</p>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight text-navy sm:text-5xl dark:text-white">Threat-Focused Security Audits</h1>
+        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">Security reviews, hardening plans, and compliance-oriented controls for critical systems.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="index.html#contact" class="btn-press inline-flex items-center rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white dark:bg-brandCyan dark:text-slate-900">Start Consultation</a>
+          <a href="#details" class="btn-press inline-flex items-center rounded-xl border border-slate-300 bg-white/80 px-6 py-3 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100">View Details</a>
+        </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="rounded-3xl border border-slate-200/80 bg-white/90 p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900/75">
+          <div class="flex h-24 w-24 items-center justify-center rounded-2xl bg-slate-100 text-teal dark:bg-slate-800 dark:text-cyan-300"><i class="fa-solid fa-shield-halved text-4xl"></i></div>
+          <p class="mt-5 text-sm text-slate-600 dark:text-slate-300">Enterprise-ready execution with security and performance baked into delivery.</p>
+        </div>
       </div>
     </section>
-    <section class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8"><div class="grid grid-cols-1 gap-6 lg:grid-cols-3"><article class="rounded-lg border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80"><div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-cyan-50 text-brandCyan dark:bg-cyan-500/10"><i class="fa-solid fa-bug text-2xl"></i></div><h2 class="text-lg font-semibold text-slate-900 dark:text-white">Vulnerability Review</h2><p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Identify weak points in applications, integrations, and exposed surfaces.</p></article><article class="rounded-lg border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80"><div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-cyan-50 text-brandCyan dark:bg-cyan-500/10"><i class="fa-solid fa-file-shield text-2xl"></i></div><h2 class="text-lg font-semibold text-slate-900 dark:text-white">Compliance Mapping</h2><p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Translate security findings into practical governance and remediation steps.</p></article><article class="rounded-lg border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80"><div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-cyan-50 text-brandCyan dark:bg-cyan-500/10"><i class="fa-solid fa-magnifying-glass-chart text-2xl"></i></div><h2 class="text-lg font-semibold text-slate-900 dark:text-white">Risk Reporting</h2><p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">Document severity, impact, and priority with clear next steps.</p></article></div></section>
-    <section id="delivery" class="border-y border-slate-200 bg-slate-50/70 dark:border-slate-800 dark:bg-slate-900/40"><div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-0 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8"><div class="order-2 h-[280px] overflow-hidden rounded-b-xl border border-t-0 border-slate-200 bg-white sm:h-[340px] lg:order-1 lg:h-auto lg:rounded-l-xl lg:rounded-r-none lg:border-r-0 lg:border-t dark:border-slate-800 dark:bg-slate-900"><img src="assets/og-image.png" alt="Assessment visual" class="h-full w-full object-contain" loading="lazy" /></div><div class="order-1 rounded-t-xl border border-slate-200 bg-white p-8 shadow-soft lg:order-2 lg:rounded-l-none lg:rounded-r-xl lg:p-12 dark:border-slate-800 dark:bg-slate-900/80"><p class="text-sm font-semibold uppercase tracking-[0.18em] text-brandCyan">Assessment Flow</p><h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 dark:text-white">A structured security review process</h2><p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">Our process is designed to be clear, non-disruptive, and useful for technical and business stakeholders.</p><div class="mt-8 space-y-4"><div class="rounded-md border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60"><h3 class="font-semibold text-slate-900 dark:text-white">1. Scope</h3><p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Define targets, systems, and the depth of review required.</p></div><div class="rounded-md border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60"><h3 class="font-semibold text-slate-900 dark:text-white">2. Inspect</h3><p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Review architecture, access paths, and control implementation.</p></div><div class="rounded-md border border-slate-200 bg-slate-50 p-4 dark:border-slate-800 dark:bg-slate-950/60"><h3 class="font-semibold text-slate-900 dark:text-white">3. Report</h3><p class="mt-1 text-sm text-slate-600 dark:text-slate-300">Provide actionable findings with practical remediation guidance.</p></div></div></div></div></section>
+
+    <section id="details" class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75"><h3 class="text-lg font-bold text-navy dark:text-white">Threat Modeling</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Built to support real business outcomes with measurable quality.</p></article>
+      <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75"><h3 class="text-lg font-bold text-navy dark:text-white">Secure SDLC Review</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Architecture and implementation aligned with long-term maintainability.</p></article>
+      <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75"><h3 class="text-lg font-bold text-navy dark:text-white">Compliance Readiness</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">Security controls integrated throughout delivery lifecycle.</p></article>
+    </section>
   </main>
-  <footer class="border-t border-slate-200 bg-slate-900 text-slate-300 dark:border-slate-800"><div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8"><div><h4 class="text-base font-semibold text-white">Logic Link EG</h4><p class="mt-3 text-sm leading-relaxed text-slate-400">Secure software and integrated systems for modern businesses and legal-tech operations.</p></div><div><h5 class="text-sm font-semibold uppercase tracking-wide text-white">Products</h5><ul class="mt-3 space-y-2 text-sm"><li><a href="web-dev.html" class="transition hover:text-brandCyan">Web Dev</a></li><li><a href="mobile-apps.html" class="transition hover:text-brandCyan">Mobile Apps</a></li><li><a href="desktop-apps.html" class="transition hover:text-brandCyan">Desktop Apps</a></li><li><a href="security-audits.html" class="transition hover:text-brandCyan">Security Audits</a></li><li><a href="api-integration.html" class="transition hover:text-brandCyan">API Integration</a></li></ul></div><div><h5 class="text-sm font-semibold uppercase tracking-wide text-white">Contact</h5><ul class="mt-3 space-y-2 text-sm"><li><a href="mailto:info@logiclinkeg.tech" class="transition hover:text-brandCyan">info@logiclinkeg.tech</a></li><li>Cairo, Egypt</li><li>Mon - Fri, 9:00 - 18:00</li></ul></div><div><h5 class="text-sm font-semibold uppercase tracking-wide text-white">Social</h5><div class="mt-4 flex items-center gap-3 text-xl"><a href="https://www.facebook.com/logiclinkeg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-800 text-slate-200 transition hover:border-brandCyan hover:bg-slate-700 hover:text-brandCyan"><i class="fa-brands fa-facebook-f"></i></a><a href="https://x.com/Logic__Link" target="_blank" rel="noopener noreferrer" aria-label="X" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-800 text-slate-200 transition hover:border-brandCyan hover:bg-slate-700 hover:text-brandCyan"><i class="fa-brands fa-x-twitter"></i></a></div></div></div><div class="border-t border-slate-800 py-4"><p class="mx-auto w-full max-w-7xl px-4 text-xs text-slate-500 sm:px-6 lg:px-8">© 2026 Logic Link EG. All rights reserved.</p></div></footer>
-  <script>const themeToggle=document.getElementById("themeToggle"),languageToggle=document.getElementById("languageToggle");themeToggle?.addEventListener("click",()=>{const isDark=document.documentElement.classList.toggle("dark");localStorage.setItem("logiclink-theme",isDark?"dark":"light")});function switchToArabicPlaceholder(){window.location.href="security-audits-ar.html"}languageToggle?.addEventListener("click",switchToArabicPlaceholder);</script>
+
+  <footer class="bg-[#0D2137] text-slate-200">
+  <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+    <div class="text-start">
+      <h4 class="text-lg font-bold text-white">Logic Link EG</h4>
+      <p class="mt-3 text-sm leading-relaxed text-slate-300">Secure software and integrated systems for modern businesses and legal-tech operations.</p>
+    </div>
+    <div class="text-start">
+      <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Products</h5>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a href="web-dev.html" class="transition hover:text-[#00a3ad]">Web Dev</a></li>
+        <li><a href="mobile-apps.html" class="transition hover:text-[#00a3ad]">Mobile Apps</a></li>
+        <li><a href="desktop-apps.html" class="transition hover:text-[#00a3ad]">Desktop Apps</a></li>
+        <li><a href="security-audits.html" class="transition hover:text-[#00a3ad]">Security Audits</a></li>
+        <li><a href="api-integration.html" class="transition hover:text-[#00a3ad]">API Integration</a></li>
+      </ul>
+    </div>
+    <div class="text-start">
+      <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Contact</h5>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a href="mailto:info@logiclinkeg.tech" class="transition hover:text-[#00a3ad]">info@logiclinkeg.tech</a></li>
+        <li>Cairo, Egypt</li>
+        <li>Mon - Fri, 9:00 - 18:00</li>
+      </ul>
+    </div>
+    <div class="text-start">
+      <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white">Social</h5>
+      <div class="mt-4 flex items-center gap-3">
+        <a href="https://www.facebook.com/logiclinkeg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-500/70 bg-slate-800 text-white transition hover:border-[#00a3ad] hover:bg-[#0A9396] hover:text-white"><i class="fa-brands fa-facebook-f text-base leading-none"></i></a>
+        <a href="https://x.com/Logic__Link" target="_blank" rel="noopener noreferrer" aria-label="X" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-500/70 bg-slate-800 text-white transition hover:border-[#00a3ad] hover:bg-[#0A9396] hover:text-white"><i class="fa-brands fa-x-twitter text-base leading-none"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-slate-700/70 py-4">
+    <p class="mx-auto w-full max-w-7xl px-4 text-xs text-slate-400 sm:px-6 lg:px-8 text-start">© 2026 Logic Link EG. All rights reserved.</p>
+  </div>
+</footer>
+
+  <script>
+    const savedTheme = localStorage.getItem("logiclink-theme");
+    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");
+    document.getElementById("themeToggle").addEventListener("click",()=>{const isDark=document.documentElement.classList.toggle("dark");localStorage.setItem("logiclink-theme", isDark?"dark":"light")});
+    document.getElementById("langToggle").addEventListener("click",()=>{window.location.href="security-audits-ar.html"});
+  </script>
 </body>
 </html>

@@ -1,189 +1,121 @@
 <!doctype html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Logic Link EG | تدقيق الأمان</title>
-  <meta name="description" content="خدمات تدقيق الأمان الموثوقة من Logic Link EG لتعزيز الثقة الرقمية." />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta name="description" content="Logic Link EG - مراجعات أمنية وخطط تقوية وضوابط جاهزة للامتثال للأنظمة الحساسة." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    tailwind.config = { darkMode: "class", theme: { extend: { colors: { brandCyan: "#00a3ad" }, fontFamily: { sans: ["Cairo", "Segoe UI", "Frutiger", "Arial", "sans-serif"] }, boxShadow: { soft: "0 8px 28px rgba(2, 6, 23, 0.08)" } } } };
-  </script>
-  <script>
-    const savedTheme = localStorage.getItem("logiclink-theme");
-    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      document.documentElement.classList.add("dark");
-    }
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: { navy: "#0D2137", teal: "#0A9396", brandCyan: "#00a3ad" },
+          boxShadow: { glow: "0 0 0 1px rgba(0,163,173,.25), 0 14px 40px rgba(10,147,150,.2)", glass: "0 10px 35px rgba(2,8,23,.25)" }
+        }
+      }
+    };
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body{font-family:"Cairo",sans-serif;background:radial-gradient(circle at 15% 18%, rgba(0,163,173,.18), transparent 36%), radial-gradient(circle at 85% 12%, rgba(10,147,150,.14), transparent 40%), linear-gradient(180deg, #f8fbff 0%, #eef4fb 100%)}
+    html.dark body{background:radial-gradient(circle at 15% 18%, rgba(0,163,173,.20), transparent 38%), radial-gradient(circle at 85% 12%, rgba(10,147,150,.16), transparent 42%), linear-gradient(180deg,#0a0a0f 0%, #111118 100%)}
+    .glass{background:rgba(255,255,255,.66);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.45)}
+    html.dark .glass{background:rgba(17,17,24,.55);border-color:rgba(148,163,184,.24)}
+    .btn-press{transition:transform .18s ease}.btn-press:active{transform:scale(.97)}
+  </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
-  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/90">
-    <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-      <a href="index-ar.html" class="flex items-center gap-3">
-        <img src="assets/icon-round.png" alt="Logic Link EG logo" class="h-9 w-9 rounded-md border border-slate-200 object-contain" />
-        <span class="text-base font-semibold tracking-tight text-slate-900 dark:text-white">Logic Link EG</span>
-      </a>
-      <div class="hidden items-center gap-8 md:flex">
-        <div class="group relative">
-          <button class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">المنتجات</button>
-          <div class="absolute left-0 top-full hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-800 dark:bg-slate-900 group-hover:block">
-            <a href="web-dev-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تطوير الويب</a>
-            <a href="mobile-apps-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تطبيقات الهاتف</a>
-            <a href="desktop-apps-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تطبيقات سطح المكتب</a>
-            <a href="security-audits-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">تدقيق الأمان</a>
-            <a href="api-integration-ar.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">دمج واجهات برمجية</a>
-          </div>
+<body class="text-slate-800 dark:text-slate-100">
+  <header class="sticky top-0 z-50 mx-auto w-full max-w-7xl px-4 pt-4 sm:px-6 lg:px-8">
+    <nav class="glass rounded-2xl shadow-glass" aria-label="Primary">
+      <div class="flex items-center justify-between px-4 py-3 sm:px-5">
+        <a href="index-ar.html" class="flex items-center gap-3">
+          <img src="assets/icon-round.png" alt="Logic Link EG logo" class="h-10 w-10 rounded-lg border border-slate-200/70 object-contain dark:border-slate-700" />
+          <p class="text-base font-bold text-navy dark:text-white">Logic Link EG</p>
+        </a>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button id="themeToggle" type="button" class="btn-press inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-300 bg-white/85 text-slate-700 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200"><i class="fa-solid fa-moon text-sm dark:hidden"></i><i class="fa-solid fa-sun hidden text-sm dark:inline-block"></i></button>
+          <button id="langToggle" type="button" class="btn-press inline-flex items-center rounded-xl bg-navy px-3 py-2 text-sm font-semibold text-white"><i class="fa-solid fa-globe me-2"></i>EN</button>
+          <a href="index-ar.html#contact" class="btn-press inline-flex items-center rounded-xl bg-brandCyan px-4 py-2 text-sm font-semibold text-slate-900">تواصل</a>
         </div>
-        <a href="index-ar.html#solutions" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">الحلول</a>
-        <a href="index-ar.html#security" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">الأمان</a>
-      </div>
-      <div class="flex items-center gap-3">
-        <button id="themeToggle" type="button" aria-label="تبديل الوضع المظلم" class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
-          <i class="fa-solid fa-moon text-sm dark:hidden"></i>
-          <i class="fa-solid fa-sun hidden text-sm dark:inline-block"></i>
-        </button>
-        <button id="languageToggle" type="button" aria-label="Switch to English" class="inline-flex items-center gap-2 rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">
-          <i class="fa-solid fa-globe text-sm"></i>EN
-        </button>
-        <a href="index-ar.html#contact" class="rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">اتصل بنا</a>
       </div>
     </nav>
   </header>
-  <main>
-    <section class="border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100/60 dark:border-slate-800 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900/60">
-      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:items-center lg:px-8 lg:py-24">
-        <div class="lg:col-span-7">
-          <a href="index-ar.html" class="inline-flex items-center gap-2 rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">
-            <i class="fa-solid fa-arrow-left"></i>العودة إلى الرئيسية
-          </a>
-          <p class="mt-6 text-sm font-semibold uppercase tracking-[0.2em] text-brandCyan">تدقيق الأمان</p>
-          <h1 class="mt-4 text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl dark:text-white">تقييمات أمان موجهة للتهديدات</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            نقيم أنظمتك بحثاً عن التهديدات والثغرات الأمنية لتعزيز الثقة الرقمية والامتثال التنظيمي.
-          </p>
-          <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-            <a href="index-ar.html#contact" class="inline-flex items-center justify-center rounded-md bg-brandCyan px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">
-              طلب تدقيق
-            </a>
-            <a href="#delivery" class="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-slate-700 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-50 hover:text-slate-900 dark:bg-slate-900 dark:text-slate-200 dark:ring-slate-700 dark:hover:bg-slate-800 dark:hover:text-white">
-              عرض المنهجية
-            </a>
-          </div>
+
+  <main class="mx-auto w-full max-w-7xl px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pt-20">
+    <a href="index-ar.html" class="btn-press inline-flex items-center rounded-xl border border-slate-300 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100"><i class="fa-solid fa-arrow-right me-2"></i>العودة للرئيسية</a>
+
+    <section class="mt-8 grid items-center gap-8 lg:grid-cols-12">
+      <div class="lg:col-span-7">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal dark:text-cyan-300">تدقيق الأمان</p>
+        <h1 class="mt-3 text-4xl font-extrabold leading-tight text-navy sm:text-5xl dark:text-white">تدقيق أمني قائم على التهديدات</h1>
+        <p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">مراجعات أمنية وخطط تقوية وضوابط جاهزة للامتثال للأنظمة الحساسة.</p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="index-ar.html#contact" class="btn-press inline-flex items-center rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white dark:bg-brandCyan dark:text-slate-900">ابدأ الاستشارة</a>
+          <a href="#details" class="btn-press inline-flex items-center rounded-xl border border-slate-300 bg-white/80 px-6 py-3 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100">تفاصيل الخدمة</a>
         </div>
-        <div class="lg:col-span-5">
-          <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-white p-5 shadow-soft sm:p-6 dark:border-slate-800 dark:bg-slate-900/80">
-            <div class="relative flex h-[300px] items-center justify-center overflow-hidden rounded-lg bg-slate-100 p-4 dark:bg-slate-800">
-              <picture>
-                <source srcset="assets/navbar-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="assets/navbar-light.png" alt="Security audit visual" class="h-full w-full object-contain" />
-              </picture>
-            </div>
-            <div class="absolute left-8 top-8 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-white/95 px-3 py-1.5 text-xs font-semibold text-cyan-800 shadow-sm backdrop-blur dark:border-cyan-400/30 dark:bg-slate-950/90 dark:text-cyan-300">
-              <i class="fa-solid fa-shield-halved"></i>موثوقة
-            </div>
-            <div class="mt-4 grid grid-cols-2 gap-3 text-sm">
-              <div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80">
-                <p class="font-semibold text-slate-900 dark:text-white">تقييم شامل</p>
-                <p class="mt-1 text-slate-600 dark:text-slate-300">اختبار شامل</p>
-              </div>
-              <div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80">
-                <p class="font-semibold text-slate-900 dark:text-white">تقارير واضحة</p>
-                <p class="mt-1 text-slate-600 dark:text-slate-300">توصيات قابلة للتطبيق</p>
-              </div>
-            </div>
-          </div>
+      </div>
+      <div class="lg:col-span-5">
+        <div class="rounded-3xl border border-slate-200/80 bg-white/90 p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900/75">
+          <div class="flex h-24 w-24 items-center justify-center rounded-2xl bg-slate-100 text-teal dark:bg-slate-800 dark:text-cyan-300"><i class="fa-solid fa-shield-halved text-4xl"></i></div>
+          <p class="mt-5 text-sm text-slate-600 dark:text-slate-300">تنفيذ مؤسسي جاهز مع تركيز على الأمان والأداء في كل مرحلة.</p>
         </div>
       </div>
     </section>
-    <section class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-        <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-cyan-50 text-brandCyan dark:bg-cyan-500/10">
-            <i class="fa-solid fa-magnifying-glass text-2xl"></i>
-          </div>
-          <h2 class="text-lg font-semibold text-slate-900 dark:text-white">كشف التهديدات</h2>
-          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            اختبار عميق لاكتشاف الثغرات والتهديدات الأمنية المحتملة.
-          </p>
-        </article>
-        <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-cyan-50 text-brandCyan dark:bg-cyan-500/10">
-            <i class="fa-solid fa-chart-bar text-2xl"></i>
-          </div>
-          <h2 class="text-lg font-semibold text-slate-900 dark:text-white">تقارير مفصلة</h2>
-          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            تقارير شاملة توضح المخاطر والتوصيات والخطوات الإجرائية.
-          </p>
-        </article>
-        <article class="rounded-lg border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80">
-          <div class="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-md bg-cyan-50 text-brandCyan dark:bg-cyan-500/10">
-            <i class="fa-solid fa-clipboard-check text-2xl"></i>
-          </div>
-          <h2 class="text-lg font-semibold text-slate-900 dark:text-white">متابعة الامتثال</h2>
-          <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-            التأكد من الامتثال المستمر والتوصيات للمعايير الصناعية.
-          </p>
-        </article>
-      </div>
-    </section>
-    <section id="delivery" class="border-y border-slate-200 bg-slate-50/70 dark:border-slate-800 dark:bg-slate-900/40">
-      <div class="mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white">منهجية التدقيق</h2>
-        <div class="mt-8 space-y-4">
-          <div class="rounded-md border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/80">
-            <h3 class="font-semibold text-slate-900 dark:text-white">1. المرحلة التحضيرية</h3>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">نجمع المعلومات عن نطاق التدقيق والأهداف والقيود.</p>
-          </div>
-          <div class="rounded-md border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/80">
-            <h3 class="font-semibold text-slate-900 dark:text-white">2. الاختبار الشامل</h3>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">اختبار كامل لاكتشاف الثغرات والتهديدات المحتملة.</p>
-          </div>
-          <div class="rounded-md border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/80">
-            <h3 class="font-semibold text-slate-900 dark:text-white">3. التقرير والتوصيات</h3>
-            <p class="mt-1 text-sm text-slate-600 dark:text-slate-300">تقرير شامل مع توصيات واضحة وخطوات إجرائية.</p>
-          </div>
-        </div>
-      </div>
+
+    <section id="details" class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75"><h3 class="text-lg font-bold text-navy dark:text-white">نمذجة التهديدات</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">موجهة لنتائج أعمال واضحة وجودة تنفيذ قابلة للقياس.</p></article>
+      <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75"><h3 class="text-lg font-bold text-navy dark:text-white">مراجعة SDLC الآمنة</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">معمارية وتنفيذ يدعمان الاستمرارية والنمو طويل المدى.</p></article>
+      <article class="rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75"><h3 class="text-lg font-bold text-navy dark:text-white">جاهزية الامتثال</h3><p class="mt-2 text-sm text-slate-600 dark:text-slate-300">ضوابط أمان مدمجة في دورة التسليم بالكامل.</p></article>
     </section>
   </main>
-  <footer class="border-t border-slate-200 bg-slate-900 text-slate-300 dark:border-slate-800">
-    <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
-      <div>
-        <h4 class="text-base font-semibold text-white">Logic Link EG</h4>
-        <p class="mt-3 text-sm leading-relaxed text-slate-400">برامج آمنة وأنظمة متكاملة.</p>
-      </div>
-      <div>
-        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">المنتجات</h5>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li><a href="web-dev-ar.html" class="transition hover:text-brandCyan">تطوير الويب</a></li>
-          <li><a href="mobile-apps-ar.html" class="transition hover:text-brandCyan">تطبيقات الهاتف</a></li>
-          <li><a href="desktop-apps-ar.html" class="transition hover:text-brandCyan">تطبيقات سطح المكتب</a></li>
-          <li><a href="security-audits-ar.html" class="transition hover:text-brandCyan">تدقيق الأمان</a></li>
-          <li><a href="api-integration-ar.html" class="transition hover:text-brandCyan">دمج واجهات برمجية</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">اتصل</h5>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li><a href="mailto:info@logiclinkeg.tech" class="transition hover:text-brandCyan">info@logiclinkeg.tech</a></li>
-        </ul>
-      </div>
-      <div></div>
+
+  <footer dir="rtl" class="bg-[#0D2137] text-slate-200">
+  <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+    <div class="text-start">
+      <h4 class="text-lg font-bold text-white">Logic Link EG</h4>
+      <p class="mt-3 text-sm leading-relaxed text-slate-300 pe-1">برمجيات آمنة وأنظمة متكاملة للشركات الحديثة وعمليات المجال القانوني والتقني.</p>
     </div>
-    <div class="border-t border-slate-800 py-4">
-      <p class="mx-auto w-full max-w-7xl px-4 text-xs text-slate-500 sm:px-6 lg:px-8">© 2026 Logic Link EG. جميع الحقوق محفوظة.</p>
+    <div class="text-start">
+      <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white">الخدمات</h5>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a href="web-dev-ar.html" class="transition hover:text-[#00a3ad]">تطوير الويب</a></li>
+        <li><a href="mobile-apps-ar.html" class="transition hover:text-[#00a3ad]">تطبيقات الهاتف</a></li>
+        <li><a href="desktop-apps-ar.html" class="transition hover:text-[#00a3ad]">تطبيقات سطح المكتب</a></li>
+        <li><a href="security-audits-ar.html" class="transition hover:text-[#00a3ad]">تدقيق الأمان</a></li>
+        <li><a href="api-integration-ar.html" class="transition hover:text-[#00a3ad]">تكامل واجهات API</a></li>
+      </ul>
     </div>
-  </footer>
+    <div class="text-start">
+      <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white">التواصل</h5>
+      <ul class="mt-4 space-y-2 text-sm text-slate-300">
+        <li><a href="mailto:info@logiclinkeg.tech" class="transition hover:text-[#00a3ad]">info@logiclinkeg.tech</a></li>
+        <li>القاهرة، مصر</li>
+        <li>الإثنين - الجمعة، 9:00 - 18:00</li>
+      </ul>
+    </div>
+    <div class="text-start">
+      <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white">السوشيال</h5>
+      <div class="mt-4 flex items-center gap-3">
+        <a href="https://www.facebook.com/logiclinkeg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-500/70 bg-slate-800 text-white transition hover:border-[#00a3ad] hover:bg-[#0A9396] hover:text-white"><i class="fa-brands fa-facebook-f text-base leading-none"></i></a>
+        <a href="https://x.com/Logic__Link" target="_blank" rel="noopener noreferrer" aria-label="X" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-500/70 bg-slate-800 text-white transition hover:border-[#00a3ad] hover:bg-[#0A9396] hover:text-white"><i class="fa-brands fa-x-twitter text-base leading-none"></i></a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-slate-700/70 py-4">
+    <p class="mx-auto w-full max-w-7xl px-4 text-xs text-slate-400 sm:px-6 lg:px-8 text-start">© 2026 Logic Link EG. جميع الحقوق محفوظة.</p>
+  </div>
+</footer>
+
   <script>
-    document.getElementById("themeToggle")?.addEventListener("click", () => {
-      const isDark = document.documentElement.classList.toggle("dark");
-      localStorage.setItem("logiclink-theme", isDark ? "dark" : "light");
-    });
-    document.getElementById("languageToggle")?.addEventListener("click", () => {
-      window.location.href = "security-audits.html";
-    });
+    const savedTheme = localStorage.getItem("logiclink-theme");
+    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");
+    document.getElementById("themeToggle").addEventListener("click",()=>{const isDark=document.documentElement.classList.toggle("dark");localStorage.setItem("logiclink-theme", isDark?"dark":"light")});
+    document.getElementById("langToggle").addEventListener("click",()=>{window.location.href="security-audits.html"});
   </script>
 </body>
 </html>

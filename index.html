@@ -1,11 +1,17 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Logic Link EG | Secure Systems Integration</title>
-  <meta name="description" content="Logic Link EG empowers organizations with secure software, integrated systems, and legal-tech compliant delivery." />
+  <title>Logic Link EG | Premium Enterprise Tech Agency</title>
+  <meta name="description" content="Logic Link EG delivers premium enterprise software, mobile apps, desktop apps, API integrations, and security audits." />
 
+  <!-- Google Fonts: Outfit for EN, Cairo for AR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -13,121 +19,182 @@
       theme: {
         extend: {
           colors: {
+            navy: "#0D2137",
+            teal: "#0A9396",
             brandCyan: "#00a3ad"
           },
-          fontFamily: {
-            sans: ["Segoe UI", "Frutiger", "Arial", "sans-serif"]
-          },
           boxShadow: {
-            soft: "0 8px 28px rgba(2, 6, 23, 0.08)"
+            glow: "0 0 0 1px rgba(0,163,173,.22), 0 14px 38px rgba(10,147,150,.24)",
+            glass: "0 12px 34px rgba(2,8,23,.22)"
+          },
+          keyframes: {
+            drift: {
+              "0%, 100%": { transform: "translateY(0px) translateX(0px)" },
+              "50%": { transform: "translateY(-14px) translateX(6px)" }
+            },
+            marquee: {
+              "0%": { transform: "translateX(0%)" },
+              "100%": { transform: "translateX(-50%)" }
+            }
+          },
+          animation: {
+            drift: "drift 9s ease-in-out infinite",
+            marquee: "marquee 26s linear infinite"
           }
         }
       }
     };
   </script>
-  <script>
-    const savedTheme = localStorage.getItem("logiclink-theme");
-    if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
-      document.documentElement.classList.add("dark");
-    }
-  </script>
-  <!-- Vercel Analytics placeholder -->
-  <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWix+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkR4j8tU94W+qY2m2I1NfQf8YB9S3g6Q4R0A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-</head>
-<body class="bg-slate-50 font-sans text-slate-800 antialiased transition-colors duration-300 dark:bg-slate-950 dark:text-slate-100">
-  <header class="sticky top-0 z-50 border-b border-slate-200/80 bg-white/95 backdrop-blur transition-colors duration-300 dark:border-slate-800 dark:bg-slate-950/90">
-    <nav class="mx-auto flex w-full max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-      <a href="#" class="flex items-center gap-3">
-        <img src="assets/icon-round.png" alt="Logic Link EG logo" class="h-9 w-9 rounded-md border border-slate-200 object-contain" />
-        <span class="text-base font-semibold tracking-tight text-slate-900 dark:text-white">Logic Link EG</span>
-      </a>
 
-      <div class="hidden items-center gap-8 md:flex">
-        <div class="group relative">
-          <button class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">
-            Products
-          </button>
-          <div class="absolute left-0 top-full hidden rounded-md border border-slate-200 bg-white shadow-lg dark:border-slate-800 dark:bg-slate-900 group-hover:block">
-            <a href="web-dev.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Web Dev</a>
-            <a href="mobile-apps.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Mobile Apps</a>
-            <a href="desktop-apps.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Desktop Apps</a>
-            <a href="security-audits.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">Security Audits</a>
-            <a href="api-integration.html" class="block px-4 py-2 text-sm transition hover:text-brandCyan">API Integration</a>
+  <!-- Font Awesome 6.5.2 + AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <style>
+    :root {
+      --navy: #0D2137;
+      --teal: #0A9396;
+      --cyan: #00a3ad;
+      --darkA: #0a0a0f;
+      --darkB: #111118;
+    }
+
+    body {
+      font-family: "Outfit", sans-serif;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(0,163,173,.22), transparent 34%),
+        radial-gradient(circle at 85% 18%, rgba(10,147,150,.18), transparent 38%),
+        linear-gradient(180deg, #f8fbff 0%, #edf4fb 100%);
+    }
+
+    html.dark body {
+      background:
+        radial-gradient(circle at 12% 15%, rgba(0,163,173,.26), transparent 36%),
+        radial-gradient(circle at 85% 18%, rgba(10,147,150,.20), transparent 40%),
+        linear-gradient(180deg, var(--darkA) 0%, var(--darkB) 100%);
+    }
+
+    html[dir="rtl"] body {
+      font-family: "Cairo", sans-serif;
+    }
+
+    .glass {
+      background: rgba(255,255,255,.68);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.42);
+    }
+
+    html.dark .glass {
+      background: rgba(17,17,24,.56);
+      border-color: rgba(148,163,184,.25);
+    }
+
+    .btn-press { transition: transform 170ms ease, box-shadow 170ms ease, background-color 170ms ease; }
+    .btn-press:active { transform: scale(.97); }
+
+    .orb { filter: blur(40px); pointer-events: none; }
+
+    .marquee-track { width: max-content; }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+  </style>
+</head>
+<body class="overflow-x-hidden text-slate-800 transition-colors duration-300 dark:text-slate-100">
+  <!-- Decorative gradient orbs for premium atmosphere -->
+  <div aria-hidden="true" class="orb animate-drift fixed -start-20 top-24 z-0 h-60 w-60 rounded-full bg-brandCyan/35"></div>
+  <div aria-hidden="true" class="orb animate-drift fixed end-0 top-44 z-0 h-72 w-72 rounded-full bg-teal/30" style="animation-delay:-2s"></div>
+
+  <!-- Sticky Glassmorphism Navbar -->
+  <header class="sticky top-0 z-50 mx-auto w-full max-w-7xl px-3 pt-3 sm:px-6 lg:px-8">
+    <nav class="glass rounded-2xl shadow-glass" aria-label="Primary Navigation">
+      <div class="flex min-h-14 items-center justify-between px-3 py-2 sm:px-5 sm:py-3">
+        <a href="#home" class="flex items-center gap-3">
+          <img src="assets/icon-round.png" alt="Logic Link EG logo" class="h-10 w-10 rounded-lg border border-slate-200/70 object-contain dark:border-slate-700" />
+          <div>
+            <p class="text-sm font-semibold tracking-wide text-slate-500 dark:text-slate-300">Logic Link EG</p>
+            <p class="text-base font-bold text-navy dark:text-white" data-i18n="brandTag">Enterprise Engineering</p>
           </div>
+        </a>
+
+        <ul class="hidden items-center gap-7 md:flex">
+          <li><a href="#services" class="text-sm font-medium text-slate-700 transition hover:text-brandCyan dark:text-slate-200" data-i18n="navServices">Services</a></li>
+          <li><a href="#tech" class="text-sm font-medium text-slate-700 transition hover:text-brandCyan dark:text-slate-200" data-i18n="navTech">Tech Stack</a></li>
+          <li><a href="#security" class="text-sm font-medium text-slate-700 transition hover:text-brandCyan dark:text-slate-200" data-i18n="navSecurity">Security</a></li>
+          <li><a href="#contact" class="text-sm font-medium text-slate-700 transition hover:text-brandCyan dark:text-slate-200" data-i18n="navContact">Contact</a></li>
+        </ul>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- 44x44 touch target -->
+          <button id="themeToggle" type="button" aria-label="Toggle theme" class="btn-press inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 bg-white/85 text-slate-700 shadow-sm hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200">
+            <i class="fa-solid fa-moon text-sm dark:hidden"></i>
+            <i class="fa-solid fa-sun hidden text-sm dark:inline-block"></i>
+          </button>
+
+          <!-- Language switch EN <-> AR -->
+          <button id="langToggle" type="button" aria-label="Switch language" class="btn-press inline-flex min-h-11 items-center rounded-xl bg-navy px-3 py-2 text-sm font-semibold text-white hover:bg-[#163152] dark:bg-brandCyan dark:text-slate-900 dark:hover:bg-cyan-300">
+            <i class="fa-solid fa-globe me-2"></i>
+            <span id="langToggleLabel">AR</span>
+          </button>
+
+          <!-- Mobile Hamburger -->
+          <button id="mobileMenuToggle" type="button" aria-label="Open mobile menu" aria-expanded="false" class="btn-press inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-300 bg-white/85 text-slate-700 dark:border-slate-700 dark:bg-slate-900/80 dark:text-slate-200 md:hidden">
+            <i class="fa-solid fa-bars"></i>
+          </button>
         </div>
-        <a href="#solutions" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Solutions</a>
-        <a href="#security" class="text-sm font-medium text-slate-600 transition hover:text-slate-900 dark:text-slate-300 dark:hover:text-white">Security</a>
       </div>
 
-      <div class="flex items-center gap-3">
-        <button id="themeToggle" type="button" aria-label="Toggle dark mode" class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200">
-          <i class="fa-solid fa-moon text-sm dark:hidden"></i>
-          <i class="fa-solid fa-sun hidden text-sm dark:inline-block"></i>
-        </button>
-        <button id="languageToggle" type="button" aria-label="Switch to Arabic" class="inline-flex items-center gap-2 rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">
-          <i class="fa-solid fa-globe text-sm"></i>
-          AR
-        </button>
-        <button id="mobileMenuToggle" type="button" aria-label="Toggle mobile menu" class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 bg-white text-slate-700 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 md:hidden">
-          <i class="fa-solid fa-bars text-sm"></i>
-        </button>
-        <a href="#contact" class="hidden rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-700 sm:inline-block">Contact Us</a>
+      <!-- Smooth mobile menu -->
+      <div id="mobileMenu" class="max-h-0 overflow-hidden border-t border-transparent px-3 transition-all duration-300 ease-out dark:border-slate-700/70 md:hidden">
+        <ul class="space-y-2 py-3">
+          <li><a href="#services" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="navServices">Services</a></li>
+          <li><a href="#tech" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="navTech">Tech Stack</a></li>
+          <li><a href="#security" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="navSecurity">Security</a></li>
+          <li><a href="#contact" class="block rounded-lg px-3 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800" data-i18n="navContact">Contact</a></li>
+        </ul>
       </div>
     </nav>
-
-    <!-- Mobile Menu Drawer -->
-    <div id="mobileMenu" class="hidden border-t border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900 md:hidden">
-      <div class="mx-auto w-full max-w-7xl px-4 py-4 sm:px-6">
-        <div class="space-y-3">
-          <a href="#" class="block rounded-md px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Products</a>
-          <div class="pl-4 space-y-2">
-            <a href="web-dev.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">Web Dev</a>
-            <a href="mobile-apps.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">Mobile Apps</a>
-            <a href="desktop-apps.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">Desktop Apps</a>
-            <a href="security-audits.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">Security Audits</a>
-            <a href="api-integration.html" class="block px-3 py-2 text-sm text-slate-600 transition hover:text-brandCyan dark:text-slate-400 dark:hover:text-cyan-400">API Integration</a>
-          </div>
-          <a href="#solutions" class="block rounded-md px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Solutions</a>
-          <a href="#security" class="block rounded-md px-4 py-2 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white">Security</a>
-          <a href="#contact" class="block rounded-md bg-brandCyan px-4 py-2 text-sm font-semibold text-white transition hover:bg-cyan-700">Contact Us</a>
-        </div>
-      </div>
-    </div>
   </header>
 
-  <main>
-    <section class="border-b border-slate-200 bg-gradient-to-b from-slate-50 via-white to-slate-100/60 dark:border-slate-800 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900/60 animate__animated animate__fadeInUp">
-      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-20 sm:px-6 lg:grid-cols-12 lg:gap-6 lg:px-8 lg:py-24">
-        <div class="lg:col-span-7 animate__animated animate__fadeInUp">
-          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brandCyan">Logic Link EG</p>
-          <h1 class="mt-4 text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl dark:text-white">Secure. Integrated. Scalable.</h1>
-          <p class="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">
-            Empowering your business with high-security software and seamless systems integration.
+  <main id="home" class="relative z-10">
+    <!-- Hero section -->
+    <section class="mx-auto w-full max-w-7xl px-3 pb-10 pt-12 sm:px-6 lg:px-8 lg:pb-14 lg:pt-20">
+      <div class="grid items-center gap-10 lg:grid-cols-12">
+        <div class="lg:col-span-7" data-aos="fade-up" data-aos-duration="850">
+          <p class="inline-flex items-center rounded-full border border-teal/35 bg-teal/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-teal dark:border-cyan-400/30 dark:bg-cyan-500/10 dark:text-cyan-300" data-i18n="heroBadge">
+            Premium Software Partner
           </p>
+
+          <h1 class="mt-5 text-start text-4xl font-extrabold leading-tight text-navy sm:text-5xl lg:text-6xl dark:text-white" data-i18n="heroTitle">
+            We Engineer Secure Digital Platforms for Ambitious Teams.
+          </h1>
+
+          <p class="mt-5 max-w-2xl text-start text-lg leading-relaxed text-slate-600 dark:text-slate-300" data-i18n="heroText">
+            From enterprise web platforms to mission-critical mobile and desktop apps, we deliver scalable systems, flawless API integrations, and proactive security audits.
+          </p>
+
+          <div class="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
+            <a href="#contact" class="btn-press inline-flex min-h-11 items-center rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-slate-900/20 hover:bg-[#163152] dark:bg-brandCyan dark:text-slate-900 dark:hover:bg-cyan-300" data-i18n="ctaPrimary">Start a Project</a>
+            <a href="#services" class="btn-press inline-flex min-h-11 items-center rounded-xl border border-slate-300 bg-white/80 px-6 py-3 text-sm font-semibold text-slate-800 hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100" data-i18n="ctaSecondary">Explore Services</a>
+          </div>
         </div>
 
-        <div class="lg:col-span-5 animate__animated animate__fadeInUp animate__delay-1s">
-          <div class="relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-soft dark:border-slate-800 dark:bg-slate-900/80">
-            <div class="relative h-[300px] bg-slate-50 p-4 dark:bg-slate-800">
-              <picture>
-                <source srcset="assets/navbar-dark.png" media="(prefers-color-scheme: dark)" />
-                <img src="assets/navbar-light.png" alt="Logic Link EG visual" class="h-full w-full object-contain" />
-              </picture>
-            </div>
-            <div class="absolute left-8 top-8 inline-flex items-center gap-2 rounded-full border border-cyan-200 bg-white/95 px-3 py-1.5 text-xs font-semibold text-cyan-800 shadow-sm backdrop-blur dark:border-cyan-400/30 dark:bg-slate-950/90 dark:text-cyan-300">
-              <i class="fa-solid fa-shield-halved"></i>
-              Verified Secure
-            </div>
-            <div class="grid grid-cols-2 gap-3 px-5 py-4 text-sm sm:px-6 sm:py-5">
-              <div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80">
-                <p class="font-semibold text-slate-900 dark:text-white">Enterprise Ready</p>
-                <p class="mt-1 text-slate-600 dark:text-slate-300">Designed for scale</p>
+        <div class="lg:col-span-5" data-aos="fade-left" data-aos-duration="950">
+          <div class="relative overflow-hidden rounded-3xl border border-slate-200/80 bg-white/85 p-6 shadow-2xl dark:border-slate-800 dark:bg-slate-900/75">
+            <div class="absolute -end-12 -top-12 h-36 w-36 rounded-full bg-brandCyan/25 blur-2xl"></div>
+            <div class="absolute -bottom-12 -start-12 h-36 w-36 rounded-full bg-teal/30 blur-2xl"></div>
+
+            <div class="relative space-y-4">
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950/60">
+                <p class="text-sm font-semibold text-navy dark:text-cyan-300" data-i18n="panelTitle1">Enterprise Delivery</p>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-300" data-i18n="panelText1">Product squads aligned with your business KPIs.</p>
               </div>
-              <div class="rounded-md bg-slate-50 p-3 dark:bg-slate-800/80">
-                <p class="font-semibold text-slate-900 dark:text-white">Security First</p>
-                <p class="mt-1 text-slate-600 dark:text-slate-300">Built into every layer</p>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950/60">
+                <p class="text-sm font-semibold text-navy dark:text-cyan-300" data-i18n="panelTitle2">API-first Integrations</p>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-300" data-i18n="panelText2">Interoperable architecture built for long-term growth.</p>
+              </div>
+              <div class="rounded-2xl border border-slate-200 bg-white p-4 dark:border-slate-800 dark:bg-slate-950/60">
+                <p class="text-sm font-semibold text-navy dark:text-cyan-300" data-i18n="panelTitle3">Security by Design</p>
+                <p class="mt-1 text-sm text-slate-600 dark:text-slate-300" data-i18n="panelText3">Threat modeling and hardening from day one.</p>
               </div>
             </div>
           </div>
@@ -135,338 +202,411 @@
       </div>
     </section>
 
-    <section id="products" class="mx-auto w-full max-w-7xl animate__animated animate__fadeInUp animate__delay-1s px-4 py-16 sm:px-6 lg:px-8">
-      <div class="mb-8">
-        <h2 class="text-3xl font-bold leading-tight tracking-tight text-slate-950 dark:text-white">Core Capabilities</h2>
-        <p class="mt-2 text-slate-600 dark:text-slate-300">Professional services designed for modern digital operations.</p>
+    <!-- Services section: Premium Bento Grid -->
+    <section id="services" class="mx-auto w-full max-w-7xl px-3 py-16 sm:px-6 lg:px-8">
+      <div class="mb-8" data-aos="fade-up">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal dark:text-cyan-300" data-i18n="servicesBadge">What We Build</p>
+        <h2 class="mt-2 text-start text-3xl font-bold text-navy dark:text-white" data-i18n="servicesTitle">Modern Capabilities, Enterprise Standards</h2>
+        <p class="mt-3 max-w-2xl text-start text-slate-600 dark:text-slate-300" data-i18n="servicesText">A premium bento-style service matrix tailored to product velocity, reliability, and compliance.</p>
       </div>
 
-      <!-- Loading spinner container -->
       <div id="servicesLoader" class="flex items-center justify-center py-12">
-        <div class="inline-flex items-center gap-3">
-          <div class="h-5 w-5 animate-spin rounded-full border-2 border-slate-300 border-t-brandCyan dark:border-slate-700 dark:border-t-cyan-500"></div>
-          <span class="text-sm font-medium text-slate-600 dark:text-slate-400">Loading services...</span>
+        <div class="inline-flex items-center gap-3 rounded-full border border-slate-300 bg-white/80 px-5 py-2 text-sm dark:border-slate-700 dark:bg-slate-900/70">
+          <span class="h-4 w-4 animate-spin rounded-full border-2 border-slate-400 border-t-brandCyan"></span>
+          <span data-i18n="loadingServices">Loading services...</span>
         </div>
       </div>
 
-      <!-- Services grid (populated by JavaScript) -->
-      <div id="servicesGrid" class="grid grid-cols-1 gap-6 sm:grid-cols-2 xl:grid-cols-4"></div>
+      <div id="servicesGrid" class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"></div>
     </section>
 
-    <section id="solutions" class="border-y border-slate-200 bg-slate-50/70 dark:border-slate-800 dark:bg-slate-900/40">
-      <div class="mx-auto grid w-full max-w-7xl grid-cols-1 items-stretch gap-0 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-8">
-        <div class="order-2 h-[280px] overflow-hidden rounded-b-xl border border-t-0 border-slate-200 bg-white sm:h-[340px] lg:order-1 lg:h-auto lg:rounded-l-xl lg:rounded-r-none lg:border-r-0 lg:border-t dark:border-slate-800 dark:bg-slate-900">
-          <img src="assets/og-image.png" alt="Security and compliance feature visual" class="h-full w-full object-contain" loading="lazy" />
+    <!-- Tech stack marquee -->
+    <section id="tech" class="border-y border-slate-200/80 bg-white/65 py-14 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/40">
+      <div class="mx-auto w-full max-w-7xl px-3 sm:px-6 lg:px-8" data-aos="fade-up">
+        <h3 class="text-center text-2xl font-bold text-navy dark:text-white" data-i18n="techTitle">Preferred Technology Stack</h3>
+        <p class="mx-auto mt-2 max-w-2xl text-center text-slate-600 dark:text-slate-300" data-i18n="techText">Battle-tested technologies for high-performance and resilient systems.</p>
+
+        <div class="marquee-wrap mt-8 overflow-hidden rounded-2xl border border-slate-200 bg-white/85 py-4 dark:border-slate-800 dark:bg-slate-900/70">
+          <div class="marquee-track flex animate-marquee items-center gap-10 px-6">
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-react text-2xl text-[#61dafb]"></i><span>React</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-node-js text-2xl text-[#8cc84b]"></i><span>Node.js</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-python text-2xl text-[#3776ab]"></i><span>Python</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-solid fa-code text-2xl text-[#0A9396]"></i><span>C++</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-apple text-2xl"></i><span>iOS</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-android text-2xl text-[#3ddc84]"></i><span>Android</span></div>
+
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-react text-2xl text-[#61dafb]"></i><span>React</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-node-js text-2xl text-[#8cc84b]"></i><span>Node.js</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-python text-2xl text-[#3776ab]"></i><span>Python</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-solid fa-code text-2xl text-[#0A9396]"></i><span>C++</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-apple text-2xl"></i><span>iOS</span></div>
+            <div class="flex items-center gap-3 text-slate-700 dark:text-slate-200"><i class="fa-brands fa-android text-2xl text-[#3ddc84]"></i><span>Android</span></div>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div id="security" class="order-1 rounded-t-xl border border-slate-200 bg-white p-8 shadow-soft lg:order-2 lg:rounded-l-none lg:rounded-r-xl lg:p-12 dark:border-slate-800 dark:bg-slate-900/80">
-          <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brandCyan">Feature Highlight</p>
-          <h2 class="mt-3 text-3xl font-bold leading-tight tracking-tight text-slate-950 dark:text-white">Security-First Approach</h2>
-          <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
-            We start every engagement with architecture review, threat modeling, and secure implementation planning.
-            Security is not a final checklist, it is the foundation.
-          </p>
-
-            <h3 class="mt-8 text-2xl font-semibold leading-tight tracking-tight text-slate-950 dark:text-white">Legal-Tech Compliance</h3>
-          <p class="mt-3 leading-relaxed text-slate-600 dark:text-slate-300">
-            Our delivery model supports legal and regulated sectors through controls for confidentiality,
-            traceability, and compliance readiness.
-          </p>
-
-          <ul class="mt-5 space-y-3 text-sm text-slate-700 dark:text-slate-200">
-            <li class="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
-              <i class="fa-solid fa-circle-check text-brandCyan"></i>
-              Data Confidentiality
-            </li>
-            <li class="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
-              <i class="fa-solid fa-circle-check text-brandCyan"></i>
-              Regulatory Alignment
-            </li>
-            <li class="flex items-center gap-3 rounded-md border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60">
-              <i class="fa-solid fa-circle-check text-brandCyan"></i>
-              Traceability
-            </li>
+    <!-- Security and contact -->
+    <section id="security" class="mx-auto w-full max-w-7xl px-3 py-16 sm:px-6 lg:px-8">
+      <div class="grid gap-6 lg:grid-cols-2">
+        <article class="rounded-3xl border border-slate-200 bg-white/85 p-7 shadow-xl dark:border-slate-800 dark:bg-slate-900/70" data-aos="fade-right">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal dark:text-cyan-300" data-i18n="securityBadge">Security First</p>
+          <h3 class="mt-3 text-start text-2xl font-bold text-navy dark:text-white" data-i18n="securityTitle">Compliance-Ready Engineering</h3>
+          <p class="mt-3 text-start text-slate-600 dark:text-slate-300" data-i18n="securityText">We integrate secure architecture patterns, role-based access control, and audit-friendly implementation to support regulated environments.</p>
+          <ul class="mt-5 space-y-3 text-sm">
+            <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60"><i class="fa-solid fa-circle-check text-brandCyan"></i><span data-i18n="securityItem1">Threat Modeling & Hardening</span></li>
+            <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60"><i class="fa-solid fa-circle-check text-brandCyan"></i><span data-i18n="securityItem2">Secure SDLC & Code Review</span></li>
+            <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 dark:border-slate-800 dark:bg-slate-950/60"><i class="fa-solid fa-circle-check text-brandCyan"></i><span data-i18n="securityItem3">Audit Logs & Compliance Controls</span></li>
           </ul>
+        </article>
 
-          <a href="#contact" class="mt-8 inline-flex items-center rounded-md bg-brandCyan px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-cyan-700">
-            Talk to Our Team
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="bg-white py-16 dark:bg-slate-950">
-      <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-          <div class="lg:col-span-4">
-            <p class="text-sm font-semibold uppercase tracking-[0.18em] text-brandCyan">Contact</p>
-            <h2 class="mt-3 text-3xl font-bold leading-tight tracking-tight text-slate-950 dark:text-white">Start a secure conversation.</h2>
-            <p class="mt-4 leading-relaxed text-slate-600 dark:text-slate-300">
-              Share your goals and we will respond with a concise, security-aware plan tailored to your team.
-            </p>
-            <div class="mt-6 rounded-xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900/80">
-              <p class="text-sm font-semibold text-slate-900 dark:text-white">Why clients reach out</p>
-              <p class="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
-                Secure software delivery, integration planning, legal-tech compliance, and privacy-first modernization.
-              </p>
-            </div>
-          </div>
-
-          <div class="lg:col-span-8">
-            <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-soft dark:border-slate-800 dark:bg-slate-900/80 sm:p-8">
-              <form action="https://formspree.io/f/mlgwvgzy" method="POST" class="grid grid-cols-1 gap-5">
-                <div>
-                  <label for="name" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Name</label>
-                  <input id="name" name="name" type="text" placeholder="Your full name" class="block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-brandCyan focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500" />
-                </div>
-                <div>
-                  <label for="email" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Email</label>
-                  <input id="email" name="email" type="email" placeholder="you@company.com" class="block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-brandCyan focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500" />
-                </div>
-                <div>
-                  <label for="message" class="mb-2 block text-sm font-medium text-slate-700 dark:text-slate-200">Message</label>
-                  <textarea id="message" name="message" rows="5" placeholder="Tell us about your project, timeline, or compliance needs." class="block w-full rounded-md border border-slate-300 bg-white px-4 py-3 text-sm text-slate-900 shadow-sm placeholder:text-slate-400 focus:border-brandCyan focus:outline-none focus:ring-2 focus:ring-cyan-500/20 dark:border-slate-700 dark:bg-slate-950 dark:text-slate-100 dark:placeholder:text-slate-500"></textarea>
-                </div>
-                <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                  <p class="text-xs leading-relaxed text-slate-500 dark:text-slate-400">We reply with a focused assessment, not a generic sales message.</p>
-                  <button type="submit" class="inline-flex items-center justify-center rounded-md bg-brandCyan px-6 py-3 text-sm font-semibold text-white transition hover:bg-cyan-700">
-                    Send Message
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <article id="contact" class="rounded-3xl border border-slate-200 bg-navy p-7 text-white shadow-xl dark:border-slate-800" data-aos="fade-left">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-300" data-i18n="contactBadge">Let's Build</p>
+          <h3 class="mt-3 text-start text-2xl font-bold" data-i18n="contactTitle">Start Your Next Secure Product</h3>
+          <p class="mt-3 text-start text-slate-200" data-i18n="contactText">Tell us what you are building and we will send a focused roadmap with clear scope, architecture, and delivery phases.</p>
+          <form class="mt-6 grid gap-3" action="https://formspree.io/f/mlgwvgzy" method="POST">
+            <label class="sr-only" for="name">Name</label>
+            <input id="name" name="name" type="text" required data-i18n-placeholder="namePlaceholder" placeholder="Your name" class="min-h-11 rounded-xl border border-slate-500/30 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300 outline-none ring-brandCyan transition focus:ring-2" />
+            <label class="sr-only" for="email">Email</label>
+            <input id="email" name="email" type="email" required data-i18n-placeholder="emailPlaceholder" placeholder="you@company.com" class="min-h-11 rounded-xl border border-slate-500/30 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300 outline-none ring-brandCyan transition focus:ring-2" />
+            <label class="sr-only" for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required data-i18n-placeholder="messagePlaceholder" placeholder="Project goals, timeline, compliance needs..." class="rounded-xl border border-slate-500/30 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-slate-300 outline-none ring-brandCyan transition focus:ring-2"></textarea>
+            <button type="submit" class="btn-press mt-1 inline-flex min-h-11 items-center justify-center rounded-xl bg-brandCyan px-5 py-3 text-sm font-semibold text-slate-900 hover:bg-cyan-300" data-i18n="sendBtn">Send Request</button>
+          </form>
+        </article>
       </div>
     </section>
   </main>
 
-  <footer class="border-t border-slate-200 bg-slate-900 text-slate-300 dark:border-slate-800">
-    <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+  <!-- Footer: strict 4-column layout + social icon visibility fix -->
+  <footer class="bg-[#0D2137] text-slate-200">
+    <div class="mx-auto grid w-full max-w-7xl grid-cols-1 gap-10 px-3 py-12 sm:px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-8">
+      <!-- 1) Brand -->
       <div>
-        <h4 class="text-base font-semibold text-white">Logic Link EG</h4>
-        <p class="mt-3 text-sm leading-relaxed text-slate-400">
-          Secure software and integrated systems for modern businesses and legal-tech operations.
-        </p>
+        <h4 class="text-lg font-bold text-white">Logic Link EG</h4>
+        <p class="mt-3 text-sm leading-relaxed text-slate-300" data-i18n="footerBrandDesc">Secure software and integrated systems for modern businesses and legal-tech operations.</p>
       </div>
 
+      <!-- 2) Products -->
       <div>
-        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">Products</h5>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li><a href="web-dev.html" class="transition hover:text-brandCyan">Web Dev</a></li>
-          <li><a href="mobile-apps.html" class="transition hover:text-brandCyan">Mobile Apps</a></li>
-          <li><a href="desktop-apps.html" class="transition hover:text-brandCyan">Desktop Apps</a></li>
-          <li><a href="security-audits.html" class="transition hover:text-brandCyan">Security Audits</a></li>
-          <li><a href="api-integration.html" class="transition hover:text-brandCyan">API Integration</a></li>
+        <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white" data-i18n="footerProductsTitle">Products</h5>
+        <ul class="mt-4 space-y-2 text-sm text-slate-300">
+          <li><a href="web-dev.html" class="transition hover:text-cyan-300" data-i18n="footerProductWeb">Web Development</a></li>
+          <li><a href="mobile-apps.html" class="transition hover:text-cyan-300" data-i18n="footerProductMobile">Mobile Apps</a></li>
+          <li><a href="desktop-apps.html" class="transition hover:text-cyan-300" data-i18n="footerProductDesktop">Desktop Apps</a></li>
+          <li><a href="api-integration.html" class="transition hover:text-cyan-300" data-i18n="footerProductApi">API Integration</a></li>
+          <li><a href="security-audits.html" class="transition hover:text-cyan-300" data-i18n="footerProductSecurity">Security Audits</a></li>
         </ul>
       </div>
 
-      <div id="support">
-        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">Contact</h5>
-        <ul class="mt-3 space-y-2 text-sm">
-          <li>
-            <a href="mailto:info@logiclinkeg.tech" class="transition hover:text-brandCyan">info@logiclinkeg.tech</a>
-          </li>
-          <li>Cairo, Egypt</li>
-          <li>Mon - Fri, 9:00 - 18:00</li>
+      <!-- 3) Contact -->
+      <div>
+        <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white" data-i18n="footerContactTitle">Contact</h5>
+        <ul class="mt-4 space-y-2 text-sm text-slate-300">
+          <li><a href="mailto:info@logiclinkeg.tech" class="transition hover:text-cyan-300">info@logiclinkeg.tech</a></li>
+          <li data-i18n="footerLocation">Cairo, Egypt</li>
+          <li data-i18n="footerHours">Mon - Fri, 9:00 - 18:00</li>
         </ul>
       </div>
 
+      <!-- 4) Social with visible centered icons -->
       <div>
-        <h5 class="text-sm font-semibold uppercase tracking-wide text-white">Social</h5>
-        <div class="mt-4 flex items-center gap-3 text-xl">
-          <a
-            href="https://www.facebook.com/logiclinkeg/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-800 text-slate-200 transition hover:border-brandCyan hover:bg-slate-700 hover:text-brandCyan"
-          >
-            <i class="fa-brands fa-facebook-f"></i>
+        <h5 class="text-sm font-semibold uppercase tracking-[0.14em] text-white" data-i18n="footerSocialTitle">Social</h5>
+        <div class="mt-4 flex items-center gap-3">
+          <a href="https://www.facebook.com/logiclinkeg/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-500/70 bg-slate-800 text-white shadow-sm transition hover:border-cyan-300 hover:bg-[#0A9396] hover:text-white">
+            <i class="fa-brands fa-facebook-f leading-none text-base"></i>
           </a>
-          <a
-            href="https://x.com/Logic__Link"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="X"
-            class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-700 bg-slate-800 text-slate-200 transition hover:border-brandCyan hover:bg-slate-700 hover:text-brandCyan"
-          >
-            <i class="fa-brands fa-x-twitter"></i>
+          <a href="https://x.com/Logic__Link" target="_blank" rel="noopener noreferrer" aria-label="X" class="inline-flex h-11 w-11 items-center justify-center rounded-full border border-slate-500/70 bg-slate-800 text-white shadow-sm transition hover:border-cyan-300 hover:bg-[#0A9396] hover:text-white">
+            <i class="fa-brands fa-x-twitter leading-none text-base"></i>
           </a>
         </div>
       </div>
     </div>
 
-    <div class="border-t border-slate-800 py-4">
-      <p class="mx-auto w-full max-w-7xl px-4 text-xs text-slate-500 sm:px-6 lg:px-8">
-        © 2026 Logic Link EG. All rights reserved.
-      </p>
+    <!-- Bottom copyright bar -->
+    <div class="border-t border-slate-700/70 py-4">
+      <p class="mx-auto w-full max-w-7xl px-3 text-xs text-slate-400 sm:px-6 lg:px-8" data-i18n="footerLeft">© 2026 Logic Link EG. All rights reserved.</p>
     </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
-    // Fallback service data matching content.json structure with 5 services
-    const fallbackServices = {
-      services: [
-        {
-          title: "Web Dev",
-          description: "High-performance websites and secure business platforms.",
-          icon: "fa-code",
-          link: "web-dev.html"
-        },
-        {
-          title: "Mobile Apps",
-          description: "Secure cross-platform mobile experiences for your teams.",
-          icon: "fa-mobile-screen-button",
-          link: "mobile-apps.html"
-        },
-        {
-          title: "Desktop Apps",
-          description: "Native C++/Qt 6 applications with high performance and security.",
-          icon: "fa-desktop",
-          link: "desktop-apps.html"
-        },
-        {
-          title: "Security Audits",
-          description: "Threat-focused assessments to strengthen digital trust.",
-          icon: "fa-shield-halved",
-          link: "security-audits.html"
-        },
-        {
-          title: "API Integration",
-          description: "Reliable integrations to improve workflow continuity.",
-          icon: "fa-network-wired",
-          link: "api-integration.html"
-        }
-      ]
+    // ------------------------------------------------------------------------
+    // Localization dictionary for EN + AR text
+    // ------------------------------------------------------------------------
+    const i18n = {
+      en: {
+        brandTag: "Enterprise Engineering",
+        navServices: "Services",
+        navTech: "Tech Stack",
+        navSecurity: "Security",
+        navContact: "Contact",
+        heroBadge: "Premium Software Partner",
+        heroTitle: "We Engineer Secure Digital Platforms for Ambitious Teams.",
+        heroText: "From enterprise web platforms to mission-critical mobile and desktop apps, we deliver scalable systems, flawless API integrations, and proactive security audits.",
+        ctaPrimary: "Start a Project",
+        ctaSecondary: "Explore Services",
+        panelTitle1: "Enterprise Delivery",
+        panelText1: "Product squads aligned with your business KPIs.",
+        panelTitle2: "API-first Integrations",
+        panelText2: "Interoperable architecture built for long-term growth.",
+        panelTitle3: "Security by Design",
+        panelText3: "Threat modeling and hardening from day one.",
+        servicesBadge: "What We Build",
+        servicesTitle: "Modern Capabilities, Enterprise Standards",
+        servicesText: "A premium bento-style service matrix tailored to product velocity, reliability, and compliance.",
+        loadingServices: "Loading services...",
+        techTitle: "Preferred Technology Stack",
+        techText: "Battle-tested technologies for high-performance and resilient systems.",
+        securityBadge: "Security First",
+        securityTitle: "Compliance-Ready Engineering",
+        securityText: "We integrate secure architecture patterns, role-based access control, and audit-friendly implementation to support regulated environments.",
+        securityItem1: "Threat Modeling & Hardening",
+        securityItem2: "Secure SDLC & Code Review",
+        securityItem3: "Audit Logs & Compliance Controls",
+        contactBadge: "Let's Build",
+        contactTitle: "Start Your Next Secure Product",
+        contactText: "Tell us what you are building and we will send a focused roadmap with clear scope, architecture, and delivery phases.",
+        namePlaceholder: "Your name",
+        emailPlaceholder: "you@company.com",
+        messagePlaceholder: "Project goals, timeline, compliance needs...",
+        sendBtn: "Send Request",
+        footerBrandDesc: "Secure software and integrated systems for modern businesses and legal-tech operations.",
+        footerProductsTitle: "Products",
+        footerProductWeb: "Web Development",
+        footerProductMobile: "Mobile Apps",
+        footerProductDesktop: "Desktop Apps",
+        footerProductApi: "API Integration",
+        footerProductSecurity: "Security Audits",
+        footerContactTitle: "Contact",
+        footerLocation: "Cairo, Egypt",
+        footerHours: "Mon - Fri, 9:00 - 18:00",
+        footerSocialTitle: "Social",
+        footerLeft: "© 2026 Logic Link EG. All rights reserved.",
+        readMore: "Read More"
+      },
+      ar: {
+        brandTag: "هندسة حلول للمؤسسات",
+        navServices: "الخدمات",
+        navTech: "التقنيات",
+        navSecurity: "الأمان",
+        navContact: "تواصل",
+        heroBadge: "شريك برمجي احترافي",
+        heroTitle: "نطوّر منصات رقمية آمنة لفرق طموحة.",
+        heroText: "من منصات الويب للمؤسسات إلى تطبيقات الهاتف وسطح المكتب الحرجة، نقدم أنظمة قابلة للتوسع وتكامل API بسلاسة وتدقيقًا أمنيًا استباقيًا.",
+        ctaPrimary: "ابدأ مشروعك",
+        ctaSecondary: "استكشف الخدمات",
+        panelTitle1: "تسليم بمستوى المؤسسات",
+        panelText1: "فرق منتجات مرتبطة بمؤشرات أعمالك.",
+        panelTitle2: "تكاملات تعتمد API",
+        panelText2: "معمارية مترابطة تدعم النمو طويل المدى.",
+        panelTitle3: "الأمان من الأساس",
+        panelText3: "نمذجة تهديدات وتقوية منذ اليوم الأول.",
+        servicesBadge: "ماذا نبني",
+        servicesTitle: "قدرات حديثة بمعايير مؤسسية",
+        servicesText: "شبكة خدمات حديثة بنمط Bento توازن بين السرعة والاعتمادية والامتثال.",
+        loadingServices: "جاري تحميل الخدمات...",
+        techTitle: "التقنيات المعتمدة",
+        techText: "تقنيات مجربة لأنظمة عالية الأداء والاعتمادية.",
+        securityBadge: "الأمان أولًا",
+        securityTitle: "هندسة جاهزة للامتثال",
+        securityText: "نطبق أنماط معمارية آمنة، وصلاحيات دقيقة، وتنفيذًا قابلًا للتدقيق لدعم البيئات المنظمة.",
+        securityItem1: "نمذجة التهديدات والتقوية",
+        securityItem2: "دورة تطوير آمنة ومراجعة كود",
+        securityItem3: "سجلات تدقيق وضوابط امتثال",
+        contactBadge: "لنبدأ",
+        contactTitle: "ابدأ منتجك الآمن القادم",
+        contactText: "شاركنا ما تريد بناءه وسنرسل خارطة طريق واضحة للنطاق والمعمارية ومراحل التنفيذ.",
+        namePlaceholder: "اسمك",
+        emailPlaceholder: "you@company.com",
+        messagePlaceholder: "أهداف المشروع، الجدول الزمني، متطلبات الامتثال...",
+        sendBtn: "إرسال الطلب",
+        footerBrandDesc: "برمجيات آمنة وأنظمة متكاملة للشركات الحديثة وعمليات المجال القانوني والتقني.",
+        footerProductsTitle: "الخدمات",
+        footerProductWeb: "تطوير الويب",
+        footerProductMobile: "تطبيقات الهاتف",
+        footerProductDesktop: "تطبيقات سطح المكتب",
+        footerProductApi: "تكامل واجهات API",
+        footerProductSecurity: "تدقيق الأمان",
+        footerContactTitle: "التواصل",
+        footerLocation: "القاهرة، مصر",
+        footerHours: "الإثنين - الجمعة، 9:00 - 18:00",
+        footerSocialTitle: "السوشيال",
+        footerLeft: "© 2026 Logic Link EG. جميع الحقوق محفوظة.",
+        readMore: "اقرأ المزيد"
+      }
     };
 
-    // Render service cards with Icon/Image Fit-or-Fallback logic
+    // ------------------------------------------------------------------------
+    // Fallback services if JSON fetch fails
+    // ------------------------------------------------------------------------
+    const fallbackEn = [
+      { title: "Web Development", description: "High-performance websites and secure enterprise platforms.", icon: "fa-code", link: "web-dev.html" },
+      { title: "Mobile Apps", description: "Cross-platform mobile apps with secure architecture.", icon: "fa-mobile-screen-button", link: "mobile-apps.html" },
+      { title: "Desktop Apps", description: "Native desktop systems for critical workflows.", icon: "fa-desktop", link: "desktop-apps.html" },
+      { title: "API Integration", description: "Reliable integrations for connected digital ecosystems.", icon: "fa-network-wired", link: "api-integration.html" },
+      { title: "Security Audits", description: "Threat-based security reviews and compliance checks.", icon: "fa-shield-halved", link: "security-audits.html" }
+    ];
+
+    const fallbackAr = [
+      { title: "تطوير الويب", description: "مواقع عالية الأداء ومنصات أعمال آمنة.", icon: "fa-code", link: "web-dev-ar.html" },
+      { title: "تطبيقات الهاتف", description: "تطبيقات متعددة المنصات بمعمارية آمنة.", icon: "fa-mobile-screen-button", link: "mobile-apps-ar.html" },
+      { title: "تطبيقات سطح المكتب", description: "أنظمة سطح مكتب أصلية لسير العمل الحرج.", icon: "fa-desktop", link: "desktop-apps-ar.html" },
+      { title: "تكامل واجهات API", description: "تكاملات موثوقة لمنظومات رقمية مترابطة.", icon: "fa-network-wired", link: "api-integration-ar.html" },
+      { title: "تدقيق الأمان", description: "مراجعات أمنية قائمة على التهديد وفحوصات امتثال.", icon: "fa-shield-halved", link: "security-audits-ar.html" }
+    ];
+
+    const pageDefaultLang = document.documentElement.lang === "ar" ? "ar" : "en";
+    let currentLang = localStorage.getItem("logiclink-lang") || pageDefaultLang;
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      const dict = i18n[lang] || i18n.en;
+
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      localStorage.setItem("logiclink-lang", lang);
+
+      document.querySelectorAll("[data-i18n]").forEach((el) => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) el.textContent = dict[key];
+      });
+
+      document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
+        const key = el.getAttribute("data-i18n-placeholder");
+        if (dict[key]) el.setAttribute("placeholder", dict[key]);
+      });
+
+      const langToggleLabel = document.getElementById("langToggleLabel");
+      if (langToggleLabel) langToggleLabel.textContent = lang === "ar" ? "EN" : "AR";
+    }
+
+    function normalizeAssetPath(value) {
+      return typeof value === "string" ? value.replace(/^Logic link\//, "assets/") : value;
+    }
+
+    function normalizeIcon(icon) {
+      if (typeof icon !== "string") return "fa-gear";
+      const cleaned = icon.trim().replace(/^fa-solid\s+/, "");
+      return cleaned || "fa-gear";
+    }
+
+    function getBentoSpan(index) {
+      if (index === 0 || index === 3) return "sm:col-span-2 lg:col-span-2";
+      return "sm:col-span-1 lg:col-span-1";
+    }
+
+    // Render services in bento-style cards
     function renderServices(services) {
-      const servicesGrid = document.getElementById("servicesGrid");
-      const servicesLoader = document.getElementById("servicesLoader");
-      
-      if (!servicesGrid) {
-        console.warn("servicesGrid element not found in DOM");
-        return;
-      }
+      const grid = document.getElementById("servicesGrid");
+      const loader = document.getElementById("servicesLoader");
+      if (!grid) return;
 
-      // Hide the loading spinner
-      if (servicesLoader) {
-        servicesLoader.style.display = "none";
-      }
+      if (loader) loader.style.display = "none";
+      const readMoreText = (i18n[currentLang] || i18n.en).readMore;
 
-      // Generate HTML for all service cards with improved icon/image handling
-      servicesGrid.innerHTML = services.map((service) => {
-        // Icon/Image Container: Fixed-size (w-16 h-16), flexbox centered, light bg in light mode / dark in dark mode
-        let iconImageHTML = '';
-        
-        if (service.image) {
-          // If image exists in JSON: render with object-contain to fit without stretching/cutting
-          iconImageHTML = `
-            <img 
-              src="${service.image}" 
-              alt="${service.title} icon" 
-              class="w-full h-full object-contain" 
-              loading="lazy"
-            />
-          `;
-        } else if (service.icon) {
-          // If no image, render FontAwesome icon with fa-solid prefix (CRITICAL)
-          iconImageHTML = `<i class="fa-solid ${service.icon} text-2xl transition-transform duration-300 group-hover:animate-bounce"></i>`;
+      grid.innerHTML = services.map((service, index) => {
+        const title = (service.title || "").trim();
+        const description = (service.description || "").trim();
+        const link = (service.link || "#").trim();
+
+        let visual = "";
+        if (service.image && String(service.image).trim() !== "") {
+          visual = '<img src="' + service.image + '" alt="' + title + '" class="h-full w-full object-contain" loading="lazy" />';
+        } else {
+          visual = '<i class="fa-solid ' + normalizeIcon(service.icon) + ' text-2xl"></i>';
         }
-        
-        return `
-          <article class="group flex h-full flex-col rounded-lg border border-slate-200 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-brandCyan/50 hover:shadow-lg hover:shadow-cyan-500/10 dark:border-slate-800 dark:bg-slate-900/80">
-            <!-- Fixed-size icon/image container with proper centering and Fit-or-Fallback logic -->
-            <div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-slate-50 p-4 text-brandCyan dark:bg-slate-800 dark:text-cyan-400">
-              ${iconImageHTML}
-            </div>
-            <h3 class="text-lg font-semibold text-slate-900 dark:text-white">${service.title}</h3>
-            <p class="mt-2 text-sm text-slate-600 dark:text-slate-300">${service.description}</p>
-            <a href="${service.link}" class="mt-auto inline-flex w-full items-center justify-center rounded-md bg-brandCyan py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-cyan-700">Read More</a>
-          </article>
-        `;
+
+        return '' +
+          '<article class="group ' + getBentoSpan(index) + ' rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75">' +
+            '<div class="flex items-center justify-between gap-3">' +
+              '<div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100 text-teal transition group-hover:scale-105 group-hover:text-brandCyan dark:bg-slate-800 dark:text-cyan-300">' + visual + '</div>' +
+              '<span class="rounded-full border border-teal/30 bg-teal/10 px-3 py-1 text-xs font-semibold text-teal dark:border-cyan-400/30 dark:bg-cyan-500/10 dark:text-cyan-300">0' + (index + 1) + '</span>' +
+            '</div>' +
+            '<h3 class="mt-4 text-start text-xl font-bold text-navy dark:text-white">' + title + '</h3>' +
+            '<p class="mt-2 min-h-[56px] text-start text-sm leading-relaxed text-slate-600 dark:text-slate-300">' + description + '</p>' +
+            '<a href="' + link + '" class="btn-press mt-5 inline-flex min-h-11 items-center rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:text-slate-100">' + readMoreText + '<i class="fa-solid fa-arrow-right text-xs ms-2"></i></a>' +
+          '</article>';
       }).join("");
     }
 
-    // Fetch and load service content from JSON with fallback
-    async function loadHomeContent() {
+    // Load services from language-specific JSON
+    async function loadServicesForLanguage(lang) {
+      const file = lang === "ar" ? "/content-ar.json" : "/content.json";
       try {
-        // Fetch from root for consistent Vercel static routing.
-        const response = await fetch("/content.json", { cache: "no-store" });
-        if (!response.ok) {
-          throw new Error(`Failed to load content.json (status: ${response.status})`);
-        }
+        const response = await fetch(file, { cache: "no-store" });
+        if (!response.ok) throw new Error("HTTP " + response.status);
 
         const data = await response.json();
-        const normalizedServices = (data.services || []).map((service) => ({
+        const services = Array.isArray(data.services) ? data.services : [];
+
+        const normalized = services.map((service) => ({
           ...service,
-          image: typeof service.image === "string" ? service.image.replace(/^Logic link\//, "assets/") : service.image,
-          icon: typeof service.icon === "string" ? service.icon.replace(/^Logic link\//, "assets/") : service.icon
+          image: normalizeAssetPath(service.image),
+          icon: typeof service.icon === "string" ? service.icon.trim() : service.icon
         }));
-        
-        // Validate services array exists and is an array
-        if (Array.isArray(normalizedServices) && normalizedServices.length > 0) {
-          renderServices(normalizedServices);
-        } else {
-          throw new Error("Invalid services data in content.json");
-        }
+
+        renderServices(normalized.length ? normalized : (lang === "ar" ? fallbackAr : fallbackEn));
       } catch (error) {
-        console.warn("loadHomeContent failed, using fallback data:", error);
-        renderServices(fallbackServices.services);
+        console.warn("Service load failed, using fallback:", error);
+        renderServices(lang === "ar" ? fallbackAr : fallbackEn);
       }
     }
 
-    // CRITICAL: Wait for DOM to be fully ready before accessing elements
-    document.addEventListener("DOMContentLoaded", function() {
-      // Initialize theme toggle with proper event binding
+    function initTheme() {
+      const stored = localStorage.getItem("logiclink-theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      const shouldDark = stored ? stored === "dark" : prefersDark;
+      document.documentElement.classList.toggle("dark", shouldDark);
+    }
+
+    function initMobileMenu() {
+      const toggleBtn = document.getElementById("mobileMenuToggle");
+      const menu = document.getElementById("mobileMenu");
+      if (!toggleBtn || !menu) return;
+
+      toggleBtn.addEventListener("click", () => {
+        const expanded = toggleBtn.getAttribute("aria-expanded") === "true";
+        toggleBtn.setAttribute("aria-expanded", expanded ? "false" : "true");
+        menu.classList.toggle("max-h-0", expanded);
+        menu.classList.toggle("max-h-72", !expanded);
+        menu.classList.toggle("border-transparent", expanded);
+      });
+
+      menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+          toggleBtn.setAttribute("aria-expanded", "false");
+          menu.classList.add("max-h-0", "border-transparent");
+          menu.classList.remove("max-h-72");
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      initTheme();
+      applyLanguage(currentLang);
+      loadServicesForLanguage(currentLang);
+      initMobileMenu();
+
+      AOS.init({ once: true, duration: 850, easing: "ease-out-cubic" });
+
       const themeToggle = document.getElementById("themeToggle");
       if (themeToggle) {
-        themeToggle.addEventListener("click", function() {
-          const isDark = document.documentElement.classList.toggle("dark");
-          localStorage.setItem("logiclink-theme", isDark ? "dark" : "light");
+        themeToggle.addEventListener("click", () => {
+          const dark = document.documentElement.classList.toggle("dark");
+          localStorage.setItem("logiclink-theme", dark ? "dark" : "light");
         });
       }
 
-      // Initialize mobile menu toggle
-      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
-      const mobileMenu = document.getElementById("mobileMenu");
-      if (mobileMenuToggle && mobileMenu) {
-        mobileMenuToggle.addEventListener("click", function() {
-          mobileMenu.classList.toggle("hidden");
+      const langToggle = document.getElementById("langToggle");
+      if (langToggle) {
+        langToggle.addEventListener("click", () => {
+          const next = currentLang === "en" ? "ar" : "en";
+          applyLanguage(next);
+          loadServicesForLanguage(next);
         });
-
-        // Close menu when a link is clicked
-        const mobileLinks = mobileMenu.querySelectorAll("a");
-        mobileLinks.forEach(link => {
-          link.addEventListener("click", function() {
-            mobileMenu.classList.add("hidden");
-          });
-        });
-      }
-
-      // Initialize language toggle with proper event binding
-      const languageToggle = document.getElementById("languageToggle");
-      if (languageToggle) {
-        languageToggle.addEventListener("click", function() {
-          window.location.href = "index-ar.html";
-        });
-      }
-
-      // Load services from JSON or use fallback
-      loadHomeContent();
-    });
-
-    // Fallback: Also call loadHomeContent on window load for browsers with delayed DOMContentLoaded
-    window.addEventListener("load", function() {
-      // Check if services grid is still empty
-      const servicesGrid = document.getElementById("servicesGrid");
-      if (servicesGrid && servicesGrid.innerHTML.trim() === "") {
-        loadHomeContent();
       }
     });
   </script>
 </body>
 </html>
-
