@@ -56,6 +56,7 @@
         <p class="mt-4 max-w-2xl text-lg leading-relaxed text-slate-600 dark:text-slate-300">Cross-platform mobile apps with robust architecture, performance, and reliability.</p>
         <div class="mt-7 flex flex-wrap gap-3">
           <a href="index.html#contact" class="btn-press inline-flex items-center rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white dark:bg-brandCyan dark:text-slate-900">Start Consultation</a>
+          <a href="#get-the-app" class="btn-press inline-flex items-center rounded-xl border border-slate-300 bg-white/80 px-6 py-3 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100">Get the App</a>
           <a href="#details" class="btn-press inline-flex items-center rounded-xl border border-slate-300 bg-white/80 px-6 py-3 text-sm font-semibold text-slate-800 dark:border-slate-700 dark:bg-slate-900/60 dark:text-slate-100">View Details</a>
         </div>
       </div>
@@ -63,6 +64,27 @@
         <div class="rounded-3xl border border-slate-200/80 bg-white/90 p-6 shadow-xl dark:border-slate-800 dark:bg-slate-900/75">
           <div class="flex h-24 w-24 items-center justify-center rounded-2xl bg-slate-100 text-teal dark:bg-slate-800 dark:text-cyan-300"><i class="fa-solid fa-mobile-screen-button text-4xl"></i></div>
           <p class="mt-5 text-sm text-slate-600 dark:text-slate-300">Enterprise-ready execution with security and performance baked into delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="get-the-app" class="mt-12 rounded-3xl border border-slate-200/80 bg-white/90 p-6 sm:p-8 shadow-xl dark:border-slate-800 dark:bg-slate-900/75">
+      <div class="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-teal/10 text-teal dark:bg-cyan-500/10 dark:text-cyan-300">
+              <i class="fa-brands fa-android text-base"></i>
+            </span>
+            <p class="text-xs font-semibold uppercase tracking-[0.18em] text-teal dark:text-cyan-300">Android Release</p>
+          </div>
+          <h2 class="mt-2 text-2xl font-extrabold text-navy sm:text-3xl dark:text-white">Get the App</h2>
+          <p class="mt-2 max-w-xl text-sm leading-relaxed text-slate-600 dark:text-slate-300">Download our latest Android application package directly built by our CI pipeline.</p>
+        </div>
+        <div id="apkReleaseContainer" class="flex flex-col gap-2.5 min-w-[220px]">
+          <div class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300/80 bg-slate-100/70 px-6 py-3 text-sm font-semibold text-slate-400 dark:border-slate-800 dark:bg-slate-800/40 dark:text-slate-500">
+            <i class="fa-solid fa-spinner animate-spin text-sm"></i>
+            <span>Loading release...</span>
+          </div>
         </div>
       </div>
     </section>
@@ -116,6 +138,70 @@
     if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) document.documentElement.classList.add("dark");
     document.getElementById("themeToggle").addEventListener("click",()=>{const isDark=document.documentElement.classList.toggle("dark");localStorage.setItem("logiclink-theme", isDark?"dark":"light")});
     document.getElementById("langToggle").addEventListener("click",()=>{window.location.href="mobile-apps-ar.html"});
+
+    async function loadAppRelease() {
+      const container = document.getElementById("apkReleaseContainer");
+      if (!container) return;
+
+      const renderComingSoon = () => {
+        container.innerHTML = `
+          <div class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-slate-100 px-6 py-3 text-sm font-semibold text-slate-400 cursor-not-allowed dark:border-slate-800 dark:bg-slate-800/60 dark:text-slate-500">
+            <i class="fa-solid fa-clock text-xs"></i>
+            <span>Coming soon</span>
+          </div>
+        `;
+      };
+
+      try {
+        const response = await fetch("/app-release.json", { cache: "no-store" });
+        if (!response.ok) {
+          renderComingSoon();
+          return;
+        }
+        const data = await response.json();
+        if (!data || !data.apk_url || typeof data.apk_url !== "string" || data.apk_url.trim() === "") {
+          renderComingSoon();
+          return;
+        }
+
+        const apkUrl = data.apk_url.trim();
+        const version = data.version ? String(data.version) : "";
+        const sizeMb = data.size_mb != null ? `${data.size_mb} MB` : "";
+        let buildDateStr = "";
+
+        if (data.build_date) {
+          try {
+            const d = new Date(data.build_date);
+            if (!isNaN(d.getTime())) {
+              buildDateStr = d.toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+              });
+            }
+          } catch (e) {}
+        }
+
+        const metaParts = [];
+        if (version) metaParts.push(`v${version}`);
+        if (buildDateStr) metaParts.push(buildDateStr);
+        if (sizeMb) metaParts.push(sizeMb);
+
+        const metaText = metaParts.join(" • ");
+
+        container.innerHTML = `
+          <a href="${apkUrl}" target="_blank" rel="noopener noreferrer" class="btn-press inline-flex items-center justify-center gap-2 rounded-xl bg-navy px-6 py-3 text-sm font-semibold text-white shadow-md hover:bg-[#163152] dark:bg-brandCyan dark:text-slate-900 dark:hover:bg-cyan-300">
+            <i class="fa-solid fa-download"></i>
+            <span>Download APK</span>
+          </a>
+          ${metaText ? `<p class="text-xs text-slate-500 dark:text-slate-400 text-center md:text-start">${metaText}</p>` : ""}
+        `;
+      } catch (err) {
+        renderComingSoon();
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadAppRelease);
   </script>
 </body>
 </html>

@@ -496,6 +496,24 @@
       return "sm:col-span-1 lg:col-span-1";
     }
 
+    let appReleaseInfo = null;
+
+    async function checkAppRelease() {
+      try {
+        const response = await fetch("/app-release.json", { cache: "no-store" });
+        if (response.ok) {
+          const data = await response.json();
+          if (data && typeof data.apk_url === "string" && data.apk_url.trim() !== "") {
+            appReleaseInfo = data;
+          } else {
+            appReleaseInfo = null;
+          }
+        }
+      } catch (e) {
+        appReleaseInfo = null;
+      }
+    }
+
     // Render services in bento-style cards
     function renderServices(services) {
       const grid = document.getElementById("servicesGrid");
@@ -517,6 +535,16 @@
           visual = '<i class="fa-solid ' + normalizeIcon(service.icon) + ' text-2xl"></i>';
         }
 
+        const isMobileCard = link.includes("mobile-apps");
+        let apkButton = "";
+        if (isMobileCard && appReleaseInfo && appReleaseInfo.apk_url) {
+          const downloadText = currentLang === "ar" ? "تحميل APK" : "Download APK";
+          apkButton = '<a href="' + appReleaseInfo.apk_url + '" target="_blank" rel="noopener noreferrer" class="btn-press mt-5 inline-flex min-h-11 items-center rounded-lg bg-navy px-3 py-2 text-xs font-semibold text-white shadow-sm hover:bg-[#163152] dark:bg-brandCyan dark:text-slate-900 dark:hover:bg-cyan-300"><i class="fa-solid fa-download me-1.5 text-xs"></i>' + downloadText + '</a>';
+        } else if (isMobileCard) {
+          const comingSoonText = currentLang === "ar" ? "APK قريباً" : "APK Coming Soon";
+          apkButton = '<span class="mt-5 inline-flex min-h-11 items-center rounded-lg border border-slate-300/80 bg-slate-100/80 px-3 py-2 text-xs font-semibold text-slate-400 cursor-not-allowed dark:border-slate-800 dark:bg-slate-800/60 dark:text-slate-500"><i class="fa-solid fa-clock me-1.5 text-xs"></i>' + comingSoonText + '</span>';
+        }
+
         return '' +
           '<article class="group ' + getBentoSpan(index) + ' rounded-2xl border border-slate-200/80 bg-white/90 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:border-teal/70 hover:shadow-glow dark:border-slate-800 dark:bg-slate-900/75">' +
             '<div class="flex items-center justify-between gap-3">' +
@@ -525,7 +553,10 @@
             '</div>' +
             '<h3 class="mt-4 text-start text-xl font-bold text-navy dark:text-white">' + title + '</h3>' +
             '<p class="mt-2 min-h-[56px] text-start text-sm leading-relaxed text-slate-600 dark:text-slate-300">' + description + '</p>' +
-            '<a href="' + link + '" class="btn-press mt-5 inline-flex min-h-11 items-center rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:text-slate-100">' + readMoreText + '<i class="fa-solid fa-arrow-right text-xs ms-2"></i></a>' +
+            '<div class="flex flex-wrap items-center gap-2">' +
+              '<a href="' + link + '" class="btn-press mt-5 inline-flex min-h-11 items-center rounded-lg border border-slate-300 px-4 py-2 text-sm font-semibold text-slate-800 transition hover:border-brandCyan hover:text-brandCyan dark:border-slate-700 dark:text-slate-100">' + readMoreText + '<i class="fa-solid fa-arrow-right text-xs ms-2"></i></a>' +
+              apkButton +
+            '</div>' +
           '</article>';
       }).join("");
     }
@@ -534,7 +565,11 @@
     async function loadServicesForLanguage(lang) {
       const file = lang === "ar" ? "/content-ar.json" : "/content.json";
       try {
-        const response = await fetch(file, { cache: "no-store" });
+        const [_, response] = await Promise.all([
+          checkAppRelease(),
+          fetch(file, { cache: "no-store" })
+        ]);
+
         if (!response.ok) throw new Error("HTTP " + response.status);
 
         const data = await response.json();
